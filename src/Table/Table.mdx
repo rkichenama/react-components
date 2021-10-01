@@ -1,0 +1,27 @@
+---
+name: Table
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import Table from './';
+
+# Table
+
+<Props of={Table} />
+
+## Basic usage
+
+<Playground>
+  <Table
+    items={[
+      { name: 'A', age: '10' },
+      { name: 'B', age: '20' },
+      { name: 'C', age: '30' }
+    ]}
+    columns={[
+      'age',
+      'name'
+    ]}
+  />
+</Playground>
