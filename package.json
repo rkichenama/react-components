@@ -4,11 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docz:dev": "export NODE_OPTIONS=--openssl-legacy-provider && docz dev",
-    "docz:build": "export NODE_OPTIONS=--openssl-legacy-provider && docz build",
-    "docz:serve": "export NODE_OPTIONS=--openssl-legacy-provider && docz build && docz serve",
     "types": "npx typac ini -i",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "keywords": [],
@@ -26,16 +23,20 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
+    "@react-theming/storybook-addon": "^1.1.7",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
+    "@storybook/addons": "^6.5.12",
     "@storybook/builder-webpack4": "^6.5.12",
     "@storybook/manager-webpack4": "^6.5.12",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
+    "@storybook/theming": "^6.5.12",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "@types/styled-components": "^5.1.26",
     "babel-loader": "^8.2.5"
   }
 }

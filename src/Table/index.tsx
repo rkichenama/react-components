@@ -58,7 +58,7 @@ const Table: React.FC<any> = () => {
       </thead>
       <tbody>
         { items.map((...args) => (
-          <tr {...render(...args)} />
+          <tr key={args[1]} {...render(...args)} />
         )) }
       </tbody>
     </table>
