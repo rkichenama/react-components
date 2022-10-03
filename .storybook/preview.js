@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { addDecorator } from '@storybook/react';
 import { withThemes } from '@react-theming/storybook-addon';
 import { theme } from '../src/theme';
+import previewTheme from './theme';
 
 import './googleIcons.css';
 
@@ -18,6 +19,7 @@ export const parameters = {
   },
   // layout: 'centered',
   docs: {
-    theme: themes.dark,
+    // theme: themes.dark,
+    theme: previewTheme,
   },
 }
