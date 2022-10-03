@@ -18,28 +18,9 @@ export default {
       control: { type: 'number', min: 0, max: 40, step: 2 }
     },
   },
-  // parameters: {
-  //   label: '',
-  // },
 };
 
-export const AsInput = ({ label, maxCharacters, size }) => {
-  const [value, onChange] = React.useState('');
-  const validationMessage = React.useMemo(() => (
-    value.length > maxCharacters ? 'You have exceeded the character allotment' : ''
-  ), [maxCharacters, value])
-  return (
-    <Dropdown {...{
-      value, onChange, label, maxCharacters, validationMessage, size
-    }} />
-  );
-};
-AsInput.args = {
-  label: '',
-  maxCharacters: 30,
-  size: 20,
-}
-export const AsSelect = () => {
+export const Example = () => {
   const [value, onChange] = React.useState([] as string[]);
 
   React.useEffect(() => {
@@ -63,15 +44,6 @@ export const AsSelect = () => {
         { label: 'Four', value: 'four' },
         { label: 'Five', value: 'five' },
       ]
-    }} />
-  );
-};
-export const AsTypeahead = () => {
-  const [value, onChange] = React.useState('');
-
-  return (
-    <Dropdown {...{
-      value, onChange
     }} />
   );
 };
