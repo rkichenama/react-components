@@ -2,24 +2,20 @@ import { Meta, Story, ArgsTable } from '@storybook/addon-docs';
 import { SamplePage } from '../shared/storybook.utils';
 import Table from './';
 
+import { matrix } from './testData';
+
 <Meta
-  title='Table'
+  title='Display/Table'
   component={Table}
-  decorators={[
-    SamplePage,
-  ]}
+  decorators={[ SamplePage, ]}
 />
 
 <Story name='Basic'>
   <Table
-    items={[
-      { name: 'A', age: '10' },
-      { name: 'B', age: '20' },
-      { name: 'C', age: '30' }
-    ]}
+    items={matrix}
     columns={[
+      'name',
       'age',
-      'name'
     ]}
   />
 </Story>

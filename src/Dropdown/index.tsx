@@ -12,7 +12,6 @@ const Dropdown = ({
   const [cursor, setCursor] = React.useState(-1);
 
   const hasValue = React.useMemo(() => !!value?.length, [value]);
-  const asInput = React.useMemo(() => !options?.length, [options]);
   const selected = React.useMemo(() => {
     if (options?.length && Array.isArray(value) && value.length) {
       return options.filter(({ value: id }) => value.includes(id));
@@ -50,20 +49,19 @@ const Dropdown = ({
 
   const inputOptions = React.useMemo(() => ({
     ...field,
-    ...(asInput ? {value} : { value: '' }),
+    value: '',
+    readOnly: true,
+    onChange: undefined,
     onClick (evt: React.MouseEvent<HTMLInputElement>) {
       field?.onClick?.(evt);
-      console.log({asInput})
-      if (!asInput) {
-        setOpen(open => !open);
-      }
+      setOpen(open => !open);
     },
-    onChange (evt: React.ChangeEvent<HTMLInputElement>) {
-      // when there are no options, return the typed in value
-      if (asInput) {
-        onChange?.(evt.target.value as string);
-      }
-    },
+    // onChange (evt: React.ChangeEvent<HTMLInputElement>) {
+    //   // when there are no options, return the typed in value
+    //   if (asInput) {
+    //     onChange?.(evt.target.value as string);
+    //   }
+    // },
     onKeyDown (evt: React.KeyboardEvent<HTMLInputElement>) {
       field?.onKeyDown?.(evt);
       handleCursor(evt);
@@ -84,7 +82,7 @@ const Dropdown = ({
         <OptionalIcon></OptionalIcon>
         <ValueOverlay>
           <Input {...inputOptions} />
-          {(!asInput && !!selected.length) && (
+          {!!selected.length && (
             <DisplayValue>
               {selected.map(({ value, label = value }) => (
                 <Tag key={label}>{label}</Tag>
@@ -113,13 +111,6 @@ const Dropdown = ({
       </FakeInput>
       <OptionalInfo>
         <Message>{validationMessage || helperText}</Message>
-        <Count>{
-          (!!maxCharacters && asInput) && (
-            <>
-              {value.length} / {maxCharacters}
-            </>
-          )
-        }</Count>
       </OptionalInfo>
     </Container>
   );
@@ -161,10 +152,10 @@ const FakeInput = styled.div.attrs({})`
 
   &:not(:focus-within):hover {
     background-color: ${({ theme }) => theme.colors.accent};
-    outline: 1px solid ${({ theme }) => theme.colors.info};
+    outline: 1px solid ${({ theme }) => theme.colors.alert.info};
   }
   &:focus-within {
-    outline: 2px solid ${({ theme }) => theme.colors.info};
+    outline: 2px solid ${({ theme }) => theme.colors.alert.info};
 
     ${Label} {
       ${activeLabelStyle}
@@ -260,8 +251,8 @@ const ItemDisplay = styled.div.attrs<OptionItem>(({ active }) => ({
   &.active,
   &:hover {
     cursor: pointer;
-    outline: 1px solid ${({ theme }) => theme.colors.info};
-    color: ${({ theme }) => theme.colors.info};
+    outline: 1px solid ${({ theme }) => theme.colors.alert.info};
+    color: ${({ theme }) => theme.colors.alert.info};
   }
 `;
 const Item = ({ active, label, value, selected, ...rest }: OptionItem) => (
@@ -277,7 +268,7 @@ const ItemSelected = styled.div`
   align-items: center;
   justify-content: center;
   flex-basis: 1.5em;
-  color: ${({ theme }) => theme.colors.info};
+  color: ${({ theme }) => theme.colors.alert.info};
 `;
 const ItemValue = styled.div`
   flex: 1;

@@ -1,0 +1,19 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { SamplePage } from '../shared/storybook.utils';
+
+import Weather from '.';
+
+export const Template = (args) => <Weather {...args} />;
+
+<Meta title='Display/Weather' component={ Weather }
+  decorators={[ SamplePage, ]} />
+
+# Weather
+
+<Canvas>
+  <Story
+    name='Example'
+    args={{}}>
+    {Template.bind({})}
+   </Story>
+</Canvas>

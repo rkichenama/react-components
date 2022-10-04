@@ -34,10 +34,10 @@ export const FakeInput = styled.div.attrs({})`
   font-size: ${({ theme }) => theme.fontSize.reg};
 
   &:not(:focus-within):hover {
-    outline: 1px solid ${({ theme }) => theme.colors.info};
+    outline: 1px solid ${({ theme }) => theme.colors.alert.info};
   }
   &:focus-within {
-    outline: 2px solid ${({ theme }) => theme.colors.info};
+    outline: 2px solid ${({ theme }) => theme.colors.alert.info};
 
     ${Label} {
       ${activeLabelStyle}

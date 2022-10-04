@@ -1,0 +1,43 @@
+<!-- Colors.stories.mdx -->
+
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import { theme } from '../theme';
+import { themes, ThemeProvider, convert, ensure } from '@storybook/theming';
+
+<Meta title="Color Theme" />
+
+# Dark color scheme
+
+<div style={{ background: '#202020' }}>
+  <ThemeProvider theme={theme}>
+    <ColorPalette>
+      {Object.entries(theme.colors).map(([k, v]) => {
+        const title = `theme.colors.${k}`;
+        if (
+          typeof v === 'string' &&
+          (v.match(/^#/) || v.match(/^rgb/) || k.match(/color/i))
+        ) {
+          return <ColorItem key={k} title={title} colors={{ [k]: v }} />;
+        } else if (typeof v === 'object') {
+          return (
+            <ColorItem
+              key={k}
+              title={title}
+              colors={Object.entries(v).reduce(
+                (acc, [key, value]) =>
+                  typeof value === 'string' &&
+                  (value.match(/^#/) ||
+                    value.match(/^rgb/) ||
+                    key.match(/color/i))
+                    ? { ...acc, [key]: value }
+                    : acc,
+                {}
+              )}
+            />
+          );
+        }
+        return null;
+      })}
+    </ColorPalette>
+  </ThemeProvider>
+</div>

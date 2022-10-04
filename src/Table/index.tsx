@@ -10,7 +10,8 @@ type RowProps = {
   className?: string,
   style?: React.CSSProperties
 }
-type RenderRow<T extends any> = (columns: (keyof T)[]) => (rowData: T, rowNumber: number, allData: T[]) => RowProps;
+type RenderRow<T extends any> = (columns: (keyof T)[]) =>
+  (rowData: T, rowNumber: number, allData: T[]) => RowProps;
 type TableContainerProps<T extends any> = {
   items: T[],
   columns: (keyof T)[],

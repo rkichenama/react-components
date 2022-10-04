@@ -1,4 +1,4 @@
-import { themes } from '@storybook/theming';
+// import { themes } from '@storybook/theming';
 import { ThemeProvider } from 'styled-components';
 import { addDecorator } from '@storybook/react';
 import { withThemes } from '@react-theming/storybook-addon';
@@ -6,6 +6,8 @@ import { theme } from '../src/theme';
 import previewTheme from './theme';
 
 import './googleIcons.css';
+import './googleFonts.css';
+import './styles.css';
 
 addDecorator(withThemes(ThemeProvider, [theme]));
 
@@ -21,5 +23,10 @@ export const parameters = {
   docs: {
     // theme: themes.dark,
     theme: previewTheme,
+  },
+  options: {
+    storySort: {
+      method: 'alphabetical',
+    },
   },
 }

@@ -1,0 +1,56 @@
+<!-- Typography.stories.mdx -->
+
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
+import { theme } from '../theme';
+
+<Meta title="Typography" />
+
+export const typography = {
+  type: {
+    primary: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+  },
+  weight: {
+    regular: '400',
+    bold: '700',
+  },
+  size: {
+    s1: 12,
+    s2: 14,
+    s3: 16,
+    m1: 20,
+    m2: 24,
+    m3: 28,
+    l1: 32,
+    l2: 40,
+    l3: 48,
+  },
+};
+
+export const SampleText = 'Sphinx of black quartz, judge my vow';
+
+# Typography
+
+<section style={{ display: 'contents', color: 'white' }}>
+  {
+    Object.entries(theme.fonts).map(([key, fontName]) => (
+      <React.Fragment key={fontName}>
+        <h2>{fontName}</h2>
+        <h3>Regular</h3>
+        <Typeset
+          fontSizes={Object.values(theme.fontSize).map(sz => Number(sz.replace('px', ''))).sort((a, b) => a - b)}
+          fontWeight={theme.fontWeight.regular}
+          sampleText={SampleText}
+          fontFamily={fontName}
+        />
+        <h3>Bold</h3>
+        <Typeset
+          fontSizes={Object.values(theme.fontSize).map(sz => Number(sz.replace('px', ''))).sort((a, b) => a - b)}
+          fontWeight={theme.fontWeight.bold}
+          sampleText={SampleText}
+          fontFamily={fontName}
+        />
+      </React.Fragment>
+    ))
+  }
+
+</section>

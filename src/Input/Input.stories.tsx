@@ -5,7 +5,7 @@ import Input from '.';
 import { Reddit } from '../icons';
 
 export default {
-  title: 'Input',
+  title: 'Interactive/Input',
   component: Input,
   decorators: [SamplePage],
   argTypes: {
