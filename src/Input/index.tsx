@@ -15,6 +15,7 @@ const TextInput = ({
 
   const hasValue = !!value?.length;
   const hasIcon = !!icon;
+  const isInvalid = !!validationMessage;
 
   const inputOptions = React.useMemo(() => ({
     ...field,
@@ -35,10 +36,10 @@ const TextInput = ({
 
   return (
     <Container {...{ size }}>
-      <FakeInput>
+      <FakeInput {...{ isInvalid }}>
         {(label || placeholder) && (
           <Label active={hasValue} {...{ hasIcon }}>
-            {hasValue ? label : placeholder ?? label}
+            {hasValue ? label : label || placeholder}
           </Label>)}
         <OptionalIcon>{icon}</OptionalIcon>
         <ValueOverlay>
@@ -48,7 +49,7 @@ const TextInput = ({
           {hasValue && <Close />}
         </StatusIcon>
       </FakeInput>
-      <OptionalInfo>
+      <OptionalInfo {...{ isInvalid }}>
         <Message>{validationMessage || helperText}</Message>
         <Count>{
           !!maxCharacters && (

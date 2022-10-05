@@ -37,3 +37,8 @@ export interface OpenMeteoResponse {
     weathercode: number[];
   }
 }
+
+export interface WeatherProps {
+  cardCount: number;
+  showDescription: boolean;
+};

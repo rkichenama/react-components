@@ -166,3 +166,24 @@ export const ThumbsUp = styled(({ className, ...rest }) => (
 ))`
   ${iconStyle}
 `;
+
+export const Prev = styled(({ className, ...rest }) => (
+  <>
+    <GoogleMaterialIcons />
+    <span className={`material-icons ${className}`} {...rest}>
+      navigate_before
+    </span>
+  </>
+))`
+  ${iconStyle}
+`;
+export const Next = styled(({ className, ...rest }) => (
+  <>
+    <GoogleMaterialIcons />
+    <span className={`material-icons ${className}`} {...rest}>
+      navigate_next
+    </span>
+  </>
+))`
+  ${iconStyle}
+`;

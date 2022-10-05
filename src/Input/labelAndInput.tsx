@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
-// todo maybe externalize
-const inputPadding = '0.25em 0.25em';
+export const inputPadding = '0.25em 0.25em';
 export const Container = styled.div.attrs<{ size?: number; }>({}) <{ size?: number; }> `
   max-width: 500px;
   ${({ size }) => size ? `width: ${size}ex;` : ''}
@@ -26,25 +25,37 @@ export const Label = styled.label.attrs<{ active: boolean; hasIcon: boolean; }>(
     display: none;
   }
 `;
-export const FakeInput = styled.div.attrs({})`
+export const FakeInput = styled.div<{ isInvalid: boolean }>`
   position: relative;
   display: flex;
   align-items: center;
-  outline: 1px solid ${({ theme }) => theme.colors.fg};
+  outline: 1px solid ${({ theme, isInvalid }) => (
+    isInvalid
+      ? theme.colors.alert.danger
+      : theme.colors.fg
+  )};
   font-size: ${({ theme }) => theme.fontSize.reg};
 
   &:not(:focus-within):hover {
-    outline: 1px solid ${({ theme }) => theme.colors.alert.info};
+    outline: 1px solid ${({ theme, isInvalid }) => (
+      isInvalid
+        ? theme.colors.alert.danger
+        : theme.colors.alert.info
+    )};
   }
   &:focus-within {
-    outline: 2px solid ${({ theme }) => theme.colors.alert.info};
+    outline: 2px solid ${({ theme, isInvalid }) => (
+      isInvalid
+        ? theme.colors.alert.danger
+        : theme.colors.alert.info
+    )};
 
     ${Label} {
       ${activeLabelStyle}
     }
   }
 `;
-export const ValueOverlay = styled.div.attrs({})`
+export const ValueOverlay = styled.div`
   position: relative;
   flex: 1;
 `;

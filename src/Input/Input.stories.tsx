@@ -27,7 +27,7 @@ export default {
   },
 } as ComponentMeta<typeof Input>
 
-export const Example = ({ label, maxCharacters, size, icon }) => {
+export const Example = ({ label, placeholder, maxCharacters, size, icon }) => {
   const [value, onChange] = React.useState('');
   const validationMessage = React.useMemo(() => (
     !!maxCharacters && (value.length > maxCharacters) ? 'You have exceeded the character allotment' : ''
@@ -35,7 +35,7 @@ export const Example = ({ label, maxCharacters, size, icon }) => {
 
   return (
     <Input {...{
-      value, onChange, label, maxCharacters, validationMessage, size, icon: /reddit/i.test(icon) ? <Reddit /> : null
+      value, onChange, label, placeholder, maxCharacters, validationMessage, size, icon: /reddit/i.test(icon) ? <Reddit /> : null
     }} />
   );
 };

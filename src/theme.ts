@@ -134,4 +134,16 @@ export const theme: DefaultTheme = {
       palatinatePurple: '#4d194d',
     }
   },
+  layers: {
+    underneath: -12,
+    below: -1,
+    above: +1,
+    overlay: 40,
+    dropdown: 50,
+    topMost: 100,
+    popover: 900, //modal w/o background
+    toast: 925,
+    loading: 950, //app level
+    modal: 1000,
+  },
 };

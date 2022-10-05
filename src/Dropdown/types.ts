@@ -8,9 +8,10 @@ export interface DropdownProps<T extends any = string>
   extends Omit<React.HTMLAttributes<HTMLInputElement>,
   'onChange' | 'value' | 'defaultValue'>
 {
-  value: T | T[];
+  value: T;
   onChange: (value: T) => void;
   label?: string;
+  icon?: React.ReactNode;
   options?: DropdownOption<T>[];
   helperText?: string;
   validationMessage?: string;

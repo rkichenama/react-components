@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { ComponentMeta } from '@storybook/react';
 import { SamplePage } from '../shared/storybook.utils';
 import Dropdown from '.';
+import { Reddit } from '../icons';
 
 export default {
   /* 👇 The title prop is optional.
@@ -11,39 +13,50 @@ export default {
   component: Dropdown,
   decorators: [SamplePage],
   argTypes: {
+    label: {
+      description: 'the label for the input',
+    },
     size: {
-      control: { type: 'number', min: 12, max: 120, step: 4 }
+      control: { type: 'number', min: 12, max: 120, step: 4 },
+      description: 'width in number of characters'
     },
-    maxCharacters: {
-      control: { type: 'number', min: 0, max: 40, step: 2 }
-    },
+    icon: {
+      control: { type:'select', options: ['none', 'reddit'] },
+      description: 'the icon for the left side of the input',
+    }
   },
-};
+} as ComponentMeta<typeof Dropdown>;
 
-export const Example = () => {
-  const [value, onChange] = React.useState([] as string[]);
+const options = [
+  { label: 'One', value: 'one' },
+  { label: 'Two', value: 'two' },
+  { label: 'Three', value: 'three' },
+  { label: 'Four', value: 'four' },
+  { label: 'Five', value: 'five' },
+];
+export const Example = ({ label, placeholder, size, icon }) => {
+  const [value, onChange] = React.useState('');
 
-  React.useEffect(() => {
-    console.log({value})
-  }, [value]);
+  const validationMessage = React.useMemo(() => (
+    (value === 'three') ? 'You have exceeded the allowable selection' : ''
+  ), [value]);
+
   return (
     <Dropdown {...{
-      value, onChange(selected) {
-        onChange(current => {
-          if (current.includes(selected)) {
-            return current.filter(value => value !== selected);
-          } else {
-            return [ ...current, selected ];
-          }
-        });
+      value, placeholder,
+      label, validationMessage, size,
+      icon: /reddit/i.test(icon) ? <Reddit /> : null,
+      onChange(selected) {
+        onChange(selected);
       },
-      placeholder: 'select from below', options: [
-        { label: 'One', value: 'one' },
-        { label: 'Two', value: 'two' },
-        { label: 'Three', value: 'three' },
-        { label: 'Four', value: 'four' },
-        { label: 'Five', value: 'five' },
-      ]
+      options
     }} />
   );
 };
+
+Example.args = {
+  label: 'Input Label',
+  placeholder: 'placeholder',
+  size: 20,
+  icon: null,
+}
