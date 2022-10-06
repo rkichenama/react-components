@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Close } from '../icons';
+import { Close } from '../../icons';
 import { Container, FakeInput, Label, ValueOverlay, Input } from './labelAndInput';
 import { OptionalIcon, StatusIcon } from './icons';
 import { InputProps } from './types';

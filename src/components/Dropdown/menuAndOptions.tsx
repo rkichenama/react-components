@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { ThumbsUp } from '../icons';
+import { SmallCheck } from '../../icons';
 import { DropdownOption } from './types';
 
 export const Menu = styled.div<{ cursor: number; }>(({ cursor }) => css`
@@ -32,7 +32,7 @@ const ItemDisplay = styled.div<OptionItem> `
 export const Item = ({ label, value, selected, index, ...rest }: OptionItem & { index: number; }) => (
   <ItemDisplay {...{ label, value, ...rest }} data-index={index}>
     <ItemSelected>
-      {selected && (<ThumbsUp />)}
+      {selected && (<SmallCheck />)}
     </ItemSelected>
     <ItemValue>{label || value}</ItemValue>
   </ItemDisplay>

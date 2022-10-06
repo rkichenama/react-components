@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import { SamplePage } from '../shared/storybook.utils';
+import { SamplePage } from '../../shared/storybook.utils';
 import Input from '.';
-import { Reddit } from '../icons';
+import { Reddit } from '../../icons';
 
 export default {
   title: 'Interactive/Input',

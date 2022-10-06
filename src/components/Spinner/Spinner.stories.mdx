@@ -1,0 +1,36 @@
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import { SamplePage } from '../../shared/storybook.utils';
+import { theme } from '../../theme';
+
+import { Spinner } from '.';
+
+export const Template = () => (
+  <div style={{
+    display: 'grid', gridTemplateColumns: 'repeat(5, 96px)',
+  }}>
+    {Object.values(theme.fontSize).map(size => (
+      <div title={size} style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        width: '96px', height: '96px'
+      }}>
+        <Spinner style={{ width: size, height: size }} />
+      </div>
+    ))}
+    <div title='Natural Size' style={{
+      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+      height: '96px', gridColumn: '1 / -1'
+    }}>
+      <Spinner />
+    </div>
+  </div>
+);
+
+<Meta title='Display/Spinner' component={ Spinner } decorators={[ SamplePage, ]} />
+
+# Spinner
+
+<Canvas>
+  <Story name='Example'>{Template.bind({})}</Story>
+</Canvas>
+
+<ArgsTable of={Spinner} />

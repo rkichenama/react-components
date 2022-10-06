@@ -15,6 +15,5 @@ export interface DropdownProps<T extends any = string>
   options?: DropdownOption<T>[];
   helperText?: string;
   validationMessage?: string;
-  maxCharacters?: number;
   size?: number;
 }

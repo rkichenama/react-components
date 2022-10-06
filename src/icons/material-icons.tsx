@@ -15,6 +15,7 @@ const GoogleMaterialIcons = createGlobalStyle`
   @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
   @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
   @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone');
+  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 
   .material-icons,
   .material-icons-sharp,
@@ -41,7 +42,22 @@ const GoogleMaterialIcons = createGlobalStyle`
   .material-icons-round { font-family: "Material Icons Round"; }
   .material-icons-two-tone { font-family: "Material Icons Two Tone"; }
   .material-icons-sharp { font-family: "Material Icons Sharp"; }
-`
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1em;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+`;
 
 export const Reddit = styled(({ className, ...rest }) => (
   <>
@@ -182,6 +198,26 @@ export const Next = styled(({ className, ...rest }) => (
     <GoogleMaterialIcons />
     <span className={`material-icons ${className}`} {...rest}>
       navigate_next
+    </span>
+  </>
+))`
+  ${iconStyle}
+`;
+export const Check = styled(({ className, ...rest }) => (
+  <>
+    <GoogleMaterialIcons />
+    <span className={`material-symbols-outlined ${className}`} {...rest}>
+      check
+    </span>
+  </>
+))`
+  ${iconStyle}
+`;
+export const SmallCheck = styled(({ className, ...rest }) => (
+  <>
+    <GoogleMaterialIcons />
+    <span className={`material-symbols-outlined ${className}`} {...rest}>
+      check_small
     </span>
   </>
 ))`

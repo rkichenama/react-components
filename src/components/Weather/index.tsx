@@ -31,7 +31,6 @@ const Weather = ({ cardCount = 5, showDescription = true }: WeatherProps) => {
         <CurrentConditions {...forecast} />
         <HourlyForecast {...forecast} />
         <DailyForecast {...forecast} />
-        <a className='attribution' href='https://open-meteo.com/'>Weather data by Open-Meteo.com</a>
       </Conditions>
     </WeatherContext.Provider>
   );
@@ -45,8 +44,7 @@ const Conditions = styled.div`
   grid-auto-rows: max-content;
   grid-template-areas:
     'currently hourly hourly hourly hourly hourly'
-    'currently daily daily daily daily daily'
-    'attribution empty empty empty empty empty';
+    'currently daily daily daily daily daily';
 
   ${Currently} {
     grid-area: currently;
@@ -56,9 +54,6 @@ const Conditions = styled.div`
   }
   .daily {
     grid-area: daily;
-  }
-  > a.attribution {
-    grid-area: attribution;
   }
 `;
 

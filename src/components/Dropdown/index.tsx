@@ -7,13 +7,13 @@ import {
 import {
   Message, OptionalInfo
 } from '../Input/optionalBlocks';
-import { Next as Caret } from '../icons';
+import { Next as Caret } from '../../icons';
 import { DropdownProps } from './types';
 import { Menu, Item } from './menuAndOptions';
 import { Tag, DisplayValue } from './valueDisplay';
 
 const Dropdown = ({
-  size, label, value, onChange, options, helperText, validationMessage, maxCharacters, placeholder, icon,
+  size, label, value, onChange, options, helperText, validationMessage, placeholder, icon,
   ...field
 }: DropdownProps): JSX.Element => {
   const [open, setOpen] = React.useState(false);
@@ -29,6 +29,15 @@ const Dropdown = ({
     }
     return undefined;
   }, [options, value]);
+  const optionItems = React.useMemo(() => (
+    options?.map((option, index) => (
+      <Item key={option.value} {...option} index={index}
+        selected={selected?.value === option.value}
+        onMouseEnter={() => { setCursor(index); }}
+        onClick={() => { onChange(option.value); setOpen(false); }}
+      />
+    ))
+  ), [options, selected]);
 
   const handleCursor = React.useCallback(({ key }: React.KeyboardEvent<HTMLInputElement>) => {
     if (!options?.length) { return; }
@@ -42,18 +51,25 @@ const Dropdown = ({
         }
         break;
       case 'ArrowUp':
-      case 'ArrowDown': {
-        setCursor(cursor => (
-          Math.max(0,
-            Math.min(options.length - 1,
-              cursor + (key === 'ArrowUp' ? -1 : 1)
+      case 'ArrowDown':
+        if (open) {
+          setCursor(cursor => (
+            Math.max(0,
+              Math.min(options.length - 1,
+                cursor + (key === 'ArrowUp' ? -1 : 1)
+              )
             )
-          )
-        ));
+          ));
+        } else {
+          setOpen(true);
+        }
         break;
-      }
       case 'Escape':
-        setOpen(false);
+        if (open) {
+          setOpen(false);
+        } else {
+          onChange('');
+        }
         break;
     }
   }, [options, open, onChange, cursor]);
@@ -73,14 +89,14 @@ const Dropdown = ({
     },
   }), [field, value, onChange]);
 
-
   return (
     <Container {...{ size }}>
       <FakeInput {...{ isInvalid }}>
         {(label || placeholder) && (
           <Label active={hasValue} {...{ hasIcon }}>
             {hasValue ? label : label || placeholder}
-          </Label>)}
+          </Label>
+        )}
         <OptionalIcon>{icon}</OptionalIcon>
         <ValueOverlay>
           <Input {...inputOptions} />
@@ -90,20 +106,11 @@ const Dropdown = ({
             </DisplayValue>
           )}
         </ValueOverlay>
-        <StatusIcon {...{ open }} onClick={() => { setOpen(open => !open)}} >
+        <StatusIcon {...{ open }} onClick={() => { setOpen(open => !open); }} >
           <Caret />
         </StatusIcon>
         {open && <Menu {...{ cursor }}>
-          {options?.map((option, index) => (
-            <Item key={option.value} {...option} index={index}
-              selected={selected?.value === option.value}
-              onMouseEnter={() => { setCursor(index); }}
-              onClick={() => {
-                onChange(option.value);
-                setOpen(false);
-              }}
-            />
-          ))}
+          {optionItems}
         </Menu>}
       </FakeInput>
       <OptionalInfo {...{ isInvalid }}>

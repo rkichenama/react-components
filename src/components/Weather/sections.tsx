@@ -2,9 +2,18 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { OpenMeteoResponse } from './types';
 import { RelativeDays, RelativeHours } from './utility';
-import { weatherCodes, weatherCodeIcons } from "./weatherCodes";
+import { weatherCodes, weatherCodeIcons } from './weatherCodes';
 import { Icon, Temp, Desc, ForecastDeck, Card } from './cards';
 import { WeatherContext } from './index';
+
+const Attribution = styled.a.attrs({
+  href: 'https://open-meteo.com/',
+  children: 'Weather data by Open-Meteo.com'
+})`
+  grid-area: attr;
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  text-decoration: none;
+`;
 
 export const CurrentConditions = ({ currentWeather: { weathercode: key, temperature } }: OpenMeteoResponse) => {
   const { system, setSystem, showDescription } = React.useContext(WeatherContext);
@@ -35,6 +44,7 @@ export const CurrentConditions = ({ currentWeather: { weathercode: key, temperat
           °C
         </label>
       </ToggleSystem>
+      <Attribution />
     </Currently>
   );
 };
@@ -92,21 +102,23 @@ export const Currently = styled.div`
   width: 100%;
   grid-template-columns: repeat(5, 1fr);
 
-  &:has(:nth-child(3):is(:last-child)) {
+  &:has(:nth-child(4):is(:last-child)) {
     grid-template-rows: repeat(3, 1fr);
     grid-template-areas:
       'temp temp temp icon icon'
       'temp temp temp icon icon'
-      'ctrl ctrl ctrl ctrl ctrl';
+      'ctrl ctrl ctrl ctrl ctrl'
+      'attr attr attr attr attr';
   }
-  &:has(:nth-child(4)) {
+  &:has(:nth-child(5)) {
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas:
       'temp temp temp icon icon'
       'temp temp temp icon icon'
       'desc desc desc desc desc'
       'desc desc desc desc desc'
-      'ctrl ctrl ctrl ctrl ctrl';
+      'ctrl ctrl ctrl ctrl ctrl'
+      'attr attr attr attr attr';
   }
   align-self: center;
 `;

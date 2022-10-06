@@ -74,10 +74,6 @@ export const theme: DefaultTheme = {
       blueGray: '#5295cb',
       mediumOrchid: '#c25bd7',
     },
-    yellows: {
-      goldenAura: '#d29e69',
-      wakeUp: '#ffd754',
-    },
     reds: {
       smokinHot: '#954a3e',
       kabuki: '#a43b3e',
@@ -85,12 +81,14 @@ export const theme: DefaultTheme = {
       candyApple: '#b1333f',
       poinsettiaRed: '#c33e49',
     },
-    purples: {
-      deepPlum: '#6a3d58',
-      brightBlackRaspberry: '#883e67',
-      hushedCranberry: '#9b587e',
-      antiqueFuchia: '#b16590',
-      pinkZinniaBloom: '#cb80a8',
+    yellows: {
+      goldenAura: '#d29e69',
+      wakeUp: '#ffd754',
+    },
+    greens: {
+      blackEvergreen: '#44524f',
+      hummingbirdGreen: '#5b714b',
+      homegrownHerbs: '#5e8548',
     },
     blues: {
       darkCobaltBlue: '#33578a',
@@ -103,10 +101,12 @@ export const theme: DefaultTheme = {
       manitouBlue: '#5b92a2',
       overboard: '#41a4cd',
     },
-    greens: {
-      blackEvergreen: '#44524f',
-      hummingbirdGreen: '#5b714b',
-      homegrownHerbs: '#5e8548',
+    purples: {
+      deepPlum: '#6a3d58',
+      brightBlackRaspberry: '#883e67',
+      hushedCranberry: '#9b587e',
+      antiqueFuchia: '#b16590',
+      pinkZinniaBloom: '#cb80a8',
     },
     grays: {
       eerieBlack: '#131313',

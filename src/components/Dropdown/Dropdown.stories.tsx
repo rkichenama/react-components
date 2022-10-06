@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import { SamplePage } from '../shared/storybook.utils';
+import { SamplePage } from '../../shared/storybook.utils';
 import Dropdown from '.';
-import { Reddit } from '../icons';
+import { Reddit } from '../../icons';
 
 export default {
-  /* 👇 The title prop is optional.
-  * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
-  * to learn how to generate automatic titles
-  */
   title: 'Interactive/Dropdown',
   component: Dropdown,
   decorators: [SamplePage],

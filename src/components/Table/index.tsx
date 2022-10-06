@@ -1,5 +1,5 @@
 import React from 'react';
-import Boundary from '../shared/Boundary';
+import Boundary from '../../shared/Boundary';
 
 function assertFC<P>(component: React.FC<P>): asserts component is React.FC<P> {};
 
