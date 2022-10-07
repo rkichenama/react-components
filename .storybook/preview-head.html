@@ -1,0 +1,25 @@
+<style>
+  iframe#storybook-preview-iframe {
+    background-color: transparent;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const callback = (mutations) => {
+      for (const mutation of mutations) {
+        mutation.type
+        console.log(mutation);
+      }
+    };
+    (new MutationObserver((mutations) => {
+      for (const { addedNodes, target, attributeName} of mutations) {
+        [...addedNodes, target].forEach(node => {
+          if (node.tagName.toLowerCase() === 'iframe' && attributeName !== 'allowtransparency') {
+            node.setAttribute('allowtransparency', 'true');
+          }
+        });
+      }
+    }))
+      .observe(document.body.getRootNode(), { attributes: true, childList: true, subtree: true });
+  });
+</script>
