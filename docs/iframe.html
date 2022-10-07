@@ -350,7 +350,7 @@
     (new MutationObserver((mutations) => {
       for (const { addedNodes, target, attributeName} of mutations) {
         [...addedNodes, target].forEach(node => {
-          if (node.tagName.toLowerCase() === 'iframe' && attributeName !== 'allowtransparency') {
+          if (node.tagName?.toLowerCase() === 'iframe' && attributeName !== 'allowtransparency') {
             node.setAttribute('allowtransparency', 'true');
           }
         });
@@ -380,4 +380,4 @@
           
       
           
-            window['STORIES'] = [{"titlePrefix":"","directory":"./src","files":"**/*.stories.mdx","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.mdx)$"},{"titlePrefix":"","directory":"./src","files":"**/*.stories.@(js|jsx|ts|tsx)","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(js|jsx|ts|tsx))$"}];</script><script src="runtime~main.6a9627b2.iframe.bundle.js"></script><script src="vendors~main.2d1c32f2.iframe.bundle.js"></script><script src="main.d0003499.iframe.bundle.js"></script></body></html>
+            window['STORIES'] = [{"titlePrefix":"","directory":"./src","files":"**/*.stories.mdx","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.mdx)$"},{"titlePrefix":"","directory":"./src","files":"**/*.stories.@(js|jsx|ts|tsx)","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(js|jsx|ts|tsx))$"}];</script><script src="runtime~main.6a9627b2.iframe.bundle.js"></script><script src="vendors~main.2d1c32f2.iframe.bundle.js"></script><script src="main.a35bfe64.iframe.bundle.js"></script></body></html>

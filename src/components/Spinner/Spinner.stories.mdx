@@ -9,7 +9,7 @@ export const Template = () => (
     display: 'grid', gridTemplateColumns: 'repeat(5, 96px)',
   }}>
     {Object.values(theme.fontSize).map(size => (
-      <div title={size} style={{
+      <div key={size} title={size} style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         width: '96px', height: '96px'
       }}>

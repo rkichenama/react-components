@@ -14,7 +14,7 @@
     (new MutationObserver((mutations) => {
       for (const { addedNodes, target, attributeName} of mutations) {
         [...addedNodes, target].forEach(node => {
-          if (node.tagName.toLowerCase() === 'iframe' && attributeName !== 'allowtransparency') {
+          if (node.tagName?.toLowerCase() === 'iframe' && attributeName !== 'allowtransparency') {
             node.setAttribute('allowtransparency', 'true');
           }
         });
