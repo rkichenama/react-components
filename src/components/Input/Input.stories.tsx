@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { SamplePage } from '../../shared/storybook.utils';
-import Input from '.';
+import Component from '.';
 import { Reddit } from '../../icons';
 
 export default {
   title: 'Interactive/Input',
-  component: Input,
+  component: Component,
   decorators: [SamplePage],
   argTypes: {
     label: {
@@ -25,22 +25,22 @@ export default {
       description: 'the icon for the left side of the input',
     }
   },
-} as ComponentMeta<typeof Input>
+} as ComponentMeta<typeof Component>
 
-export const Example = ({ label, placeholder, maxCharacters, size, icon }) => {
+export const Input = ({ label, placeholder, maxCharacters, size, icon }) => {
   const [value, onChange] = React.useState('');
   const validationMessage = React.useMemo(() => (
     !!maxCharacters && (value.length > maxCharacters) ? 'You have exceeded the character allotment' : ''
   ), [maxCharacters, value]);
 
   return (
-    <Input {...{
+    <Component {...{
       value, onChange, label, placeholder, maxCharacters, validationMessage, size, icon: /reddit/i.test(icon) ? <Reddit /> : null
     }} />
   );
 };
 
-Example.args = {
+Input.args = {
   label: 'Input Label',
   placeholder: 'placeholder',
   maxCharacters: 0,

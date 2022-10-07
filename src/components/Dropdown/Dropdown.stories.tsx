@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { SamplePage } from '../../shared/storybook.utils';
-import Dropdown from '.';
+import Component from '.';
 import { Reddit } from '../../icons';
 
 export default {
   title: 'Interactive/Dropdown',
-  component: Dropdown,
+  component: Component,
   decorators: [SamplePage],
   argTypes: {
     label: {
@@ -21,7 +21,7 @@ export default {
       description: 'the icon for the left side of the input',
     }
   },
-} as ComponentMeta<typeof Dropdown>;
+} as ComponentMeta<typeof Component>;
 
 const options = [
   { label: 'One', value: 'one' },
@@ -30,7 +30,7 @@ const options = [
   { label: 'Four', value: 'four' },
   { label: 'Five', value: 'five' },
 ];
-export const Example = ({ label, placeholder, size, icon }) => {
+export const Dropdown = ({ label, placeholder, size, icon }) => {
   const [value, onChange] = React.useState('');
 
   const validationMessage = React.useMemo(() => (
@@ -38,7 +38,7 @@ export const Example = ({ label, placeholder, size, icon }) => {
   ), [value]);
 
   return (
-    <Dropdown {...{
+    <Component {...{
       value, placeholder,
       label, validationMessage, size,
       icon: /reddit/i.test(icon) ? <Reddit /> : null,
@@ -50,7 +50,7 @@ export const Example = ({ label, placeholder, size, icon }) => {
   );
 };
 
-Example.args = {
+Dropdown.args = {
   label: 'Input Label',
   placeholder: 'placeholder',
   size: 20,

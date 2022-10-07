@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { SamplePage } from '../../shared/storybook.utils';
-import Typeahead from '.';
+import Component from '.';
 import { Reddit } from '../../icons';
 
 export default {
   title: 'Interactive/Typeahead',
-  component: Typeahead,
+  component: Component,
   decorators: [SamplePage],
   argTypes: {
     label: {
@@ -21,30 +21,35 @@ export default {
       description: 'the icon for the left side of the input',
     }
   },
-} as ComponentMeta<typeof Typeahead>;
+} as ComponentMeta<typeof Component>;
 
 const options = [
-  { label: 'One', value: 1 },
-  { label: 'Two', value: 2 },
-  { label: 'Three', value: 3 },
-  { label: 'Four', value: 4 },
-  { label: 'Five', value: 5 },
+  { value: 'Option 1 dark' },
+  { value: 'Option 2 knight' },
+  { value: 'Option 3 rises' },
+  { value: 'Option 4 at' },
+  { value: 'Option 5 dawn' },
 ];
 
-export const Example = ({ label, placeholder, size, icon }) => {
+export const Typeahead = ({ label, placeholder, size, icon }) => {
   const [value, onChange] = React.useState('');
-  const [selection, setSelection] = React.useState(-1);
+  const [selection, setSelection] = React.useState('');
   const [isLoading, setLoading] = React.useState(false);
 
   const validationMessage = React.useMemo(() => (
-    (selection === 3) ? 'You have exceeded the allowable selection' : ''
+    (selection?.includes('3')) ? 'You have exceeded the allowable selection' : ''
   ), [selection]);
+  const filteredOptions = React.useMemo(() => (
+    value
+      ? options.filter((o) => o.value.toLowerCase().includes(value.toLowerCase()))
+      : options
+  ), [value, options]);
 
   React.useEffect(() => {
     setLoading(true);
     const timeout = window.setTimeout(() => {
       setLoading(false);
-    }, 250);
+    }, 1250);
 
     return () => {
       window.clearTimeout(timeout);
@@ -56,21 +61,22 @@ export const Example = ({ label, placeholder, size, icon }) => {
   }, [selection]);
 
   return (
-    <Typeahead {...{
+    <Component {...{
       value, placeholder,
       label, validationMessage, size,
       icon: /reddit/i.test(icon) ? <Reddit /> : null,
-      onChange, options,
+      onChange,
+      options: filteredOptions,
       isLoading,
-      selection: selection === -1 ? undefined : selection,
+      selection,
       onSelectionChange: (selected) => {
-        setSelection(Number(selected ?? -1));
+        setSelection(selected as string);
       }
     }} />
   );
 };
 
-Example.args = {
+Typeahead.args = {
   label: 'Input Label',
   placeholder: 'placeholder',
   size: 20,

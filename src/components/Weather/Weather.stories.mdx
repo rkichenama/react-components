@@ -6,13 +6,13 @@ import Weather from '.';
 export const Template = (args) => <Weather {...args} />;
 
 <Meta title='Display/Weather' component={ Weather }
-  decorators={[ SamplePage, ]} />
+  decorators={[/*  SamplePage,  */]} />
 
 # Weather
 
 <Canvas>
   <Story
-    name='Example'
+    name='Weather'
     args={{
       cardCount: 5,
       showDescription: true,
@@ -22,4 +22,4 @@ export const Template = (args) => <Weather {...args} />;
    </Story>
 </Canvas>
 
-<ArgsTable story='Example' />
+<ArgsTable story='Weather' />

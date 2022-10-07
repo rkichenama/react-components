@@ -13,6 +13,10 @@ const Attribution = styled.a.attrs({
   grid-area: attr;
   font-size: ${({ theme }) => theme.fontSize.sm};
   text-decoration: none;
+  color: ${({ theme }) => theme.colors.darkAccent};
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent};
+  }
 `;
 
 export const CurrentConditions = ({ currentWeather: { weathercode: key, temperature } }: OpenMeteoResponse) => {

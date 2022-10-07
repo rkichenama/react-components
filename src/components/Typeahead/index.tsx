@@ -101,7 +101,7 @@ const Typeahead = ({
           <Input {...inputOptions} />
           {!value && !!selected && (
             <DisplayValue>
-              <Tag>{selected.label || selected.value}</Tag>
+              <Tag>{selected.label || selected.value || null}</Tag>
             </DisplayValue>
           )}
         </ValueOverlay>

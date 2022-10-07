@@ -38,6 +38,7 @@ const Weather = ({ cardCount = 5, showDescription = true }: WeatherProps) => {
 
 const Conditions = styled.div`
   font-family: ${({ theme }) => theme.fonts.firaSans};
+  color: ${({ theme }) => theme.colors.fg};
   display: grid;
   width: 100%;
   grid-template-columns: repeat(6, 1fr);

@@ -1,7 +1,7 @@
 type DataRow = {
   name: string;
   age: number;
-  
+
 };
 
 function capFirst(string) {
@@ -25,4 +25,4 @@ const generateRow = (_, n: number) => ({
   age: ((Math.random() * 39) + 21) | 0,
 });
 
-export const matrix: DataRow[] = Array.from({ length: 5 }).map(generateRow);
+export const matrix: DataRow[] = Array.from({ length: 27 }).map(generateRow);

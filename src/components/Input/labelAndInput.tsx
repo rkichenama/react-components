@@ -35,6 +35,8 @@ export const FakeInput = styled.div<{ isInvalid: boolean }>`
       : theme.colors.fg
   )};
   font-size: ${({ theme }) => theme.fontSize.reg};
+  background-color: ${({ theme }) => theme.colors.bg};
+  color: ${({ theme }) => theme.colors.fg};
 
   &:not(:focus-within):hover {
     outline: 1px solid ${({ theme, isInvalid }) => (
@@ -67,6 +69,7 @@ export const Input = styled.input.attrs({
   border: none;
   padding: ${inputPadding};
   background-color: transparent;
+  color: ${({ theme }) => theme.colors.fg};
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
