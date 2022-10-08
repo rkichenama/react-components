@@ -12,29 +12,29 @@ import { DropdownProps } from './types';
 import { Menu, Item } from './menuAndOptions';
 import { Tag, DisplayValue } from './valueDisplay';
 
-const Dropdown = ({
+const Dropdown = <T extends any>({
   size, label, value, onChange, options, helperText, validationMessage, placeholder, icon,
   ...field
-}: DropdownProps): JSX.Element => {
+}: DropdownProps<T>): JSX.Element => {
   const [open, setOpen] = React.useState(false);
   const [cursor, setCursor] = React.useState(-1);
 
-  const hasValue = !!value?.length;
+  const hasValue = !!value;
   const hasIcon = !!icon;
   const isInvalid = !!validationMessage;
 
   const selected = React.useMemo(() => {
-    if (options?.length && value.length) {
+    if (options?.length && !!value) {
       return options.find(({ value: id }) => value === id);
     }
     return undefined;
   }, [options, value]);
   const optionItems = React.useMemo(() => (
     options?.map((option, index) => (
-      <Item key={option.value} {...option} index={index}
+      <Item key={index} {...option} index={index}
         selected={selected?.value === option.value}
         onMouseEnter={() => { setCursor(index); }}
-        onClick={() => { onChange(option.value); setOpen(false); }}
+        onClick={() => { onChange?.(option.value); setOpen(false); }}
       />
     ))
   ), [options, selected]);
@@ -46,7 +46,7 @@ const Dropdown = ({
         if (!open) {
           setOpen(true);
         } else {
-          onChange(options[cursor].value);
+          onChange?.(options[cursor].value);
           setOpen(false);
         }
         break;
@@ -68,7 +68,7 @@ const Dropdown = ({
         if (open) {
           setOpen(false);
         } else {
-          onChange('');
+          onChange?.();
         }
         break;
     }
@@ -102,7 +102,7 @@ const Dropdown = ({
           <Input {...inputOptions} />
           {!!selected && (
             <DisplayValue>
-              <Tag key={selected.value}>{selected.label || selected.value}</Tag>
+              <Tag>{selected.label || selected.value}</Tag>
             </DisplayValue>
           )}
         </ValueOverlay>

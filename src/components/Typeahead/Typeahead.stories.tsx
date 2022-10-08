@@ -77,7 +77,7 @@ export const Typeahead = ({ label, placeholder, size, icon }) => {
 };
 
 Typeahead.args = {
-  label: 'Input Label',
+  label: 'Typeahead',
   placeholder: 'placeholder',
   size: 20,
   icon: null,

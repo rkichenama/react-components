@@ -51,7 +51,7 @@ export const Dropdown = ({ label, placeholder, size, icon }) => {
 };
 
 Dropdown.args = {
-  label: 'Input Label',
+  label: 'Dropdown',
   placeholder: 'placeholder',
   size: 20,
   icon: null,

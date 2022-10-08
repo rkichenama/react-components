@@ -41,7 +41,7 @@ export const Input = ({ label, placeholder, maxCharacters, size, icon }) => {
 };
 
 Input.args = {
-  label: 'Input Label',
+  label: 'Input',
   placeholder: 'placeholder',
   maxCharacters: 0,
   size: 20,

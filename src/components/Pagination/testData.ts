@@ -25,4 +25,4 @@ const generateRow = (_, n: number) => ({
   age: ((Math.random() * 39) + 21) | 0,
 });
 
-export const matrix: DataRow[] = Array.from({ length: 7 }).map(generateRow);
+export const matrix: DataRow[] = Array.from({ length: 112 }).map(generateRow);
