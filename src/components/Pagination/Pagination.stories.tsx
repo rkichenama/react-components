@@ -8,7 +8,7 @@ import { matrix } from './testData';
 export default {
   title: 'Interactive/Pagination',
   component: Component,
-  decorators: [SamplePage],
+  decorators: [/* SamplePage */],
   argTypes: {
     totalItems: {
       description: 'total number of items to manage paging through'

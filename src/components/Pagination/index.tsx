@@ -15,8 +15,15 @@ const Pages = new Intl.NumberFormat('en', {
   style: 'unit',
   useGrouping: true,
 });
+const options = [
+  { value: 10 },
+  { value: 25 },
+  { value: 50 },
+  { value: 100 },
+];
+const minPageSize = Math.min(...options.map(({ value }) => value));
 
-const Pagination = ({ totalItems = 0, page = 1, pageSize = 10, onPaginationChange }: Paginator) => {
+const Pagination = ({ totalItems = 0, page = 1, pageSize = minPageSize, onPaginationChange }: Paginator) => {
   const [pages, pagesLabel] = React.useMemo(() => {
     const pages = Math.ceil(totalItems / pageSize);
     return [
@@ -31,7 +38,7 @@ const Pagination = ({ totalItems = 0, page = 1, pageSize = 10, onPaginationChang
     onPaginationChange?.({ page: newPage });
   }, [page, pages]);
 
-  return totalItems <= 10 ? null : (
+  return totalItems <= minPageSize ? null : (
     <Container>
       <Left>{pagesLabel}</Left>
       <Middle>
@@ -54,12 +61,7 @@ const Pagination = ({ totalItems = 0, page = 1, pageSize = 10, onPaginationChang
         <Dropdown
           size={10}
           value={pageSize}
-          options={[
-            { value: 10 },
-            { value: 25 },
-            { value: 50 },
-            { value: 100 },
-          ]}
+          options={options}
           onChange={(newPage = 10) => {
             onPaginationChange?.({
               page: 1,
@@ -72,12 +74,21 @@ const Pagination = ({ totalItems = 0, page = 1, pageSize = 10, onPaginationChang
   );
 };
 
-const Left = styled.div``;
-const Middle = styled.div``;
-const Right = styled.div``;
+const Left = styled.div`
+  color: ${({ theme }) => theme.colors.fg};
+`;
+const Middle = styled.div`
+  color: ${({ theme }) => theme.colors.fg};
+`;
+const Right = styled.div`
+  color: ${({ theme }) => theme.colors.fg};
+`;
 const Container = styled.div`
   display: flex;
   align-items: center;
+  border-radius: 1ic / 50%;
+  outline: 1px solid ${({ theme }) => theme.colors.grays.jet};
+  background-color: ${({ theme }) => theme.colors.bg};
 
   > * {
     padding: 0.5ic 1ic;

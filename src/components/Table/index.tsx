@@ -44,7 +44,7 @@ const Tbl = styled.table.attrs({})`
   width: 100%;
   border-spacing: 4px;
   border-collapse: separate;
-  /* outline: 1px solid; */
+  outline: 1px solid ${({ theme }) => theme.colors.grays.jet};
 `;
 const Td = styled.td.attrs({})`
   /* outline: 1px solid; */
