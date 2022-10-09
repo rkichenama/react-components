@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { SamplePage } from '../../shared/storybook.utils';
 import Component from '.';
+import { DropdownOption, DropdownProps } from './types';
 import { Reddit } from '../../icons';
 
 export default {
@@ -23,7 +24,7 @@ export default {
   },
 } as ComponentMeta<typeof Component>;
 
-const options = [
+const options: DropdownOption<string>[] = [
   { label: 'One', value: 'one' },
   { label: 'Two', value: 'two' },
   { label: 'Three', value: 'three' },
@@ -46,7 +47,7 @@ export const Dropdown = ({ label, placeholder, size, icon }) => {
         onChange(selected);
       },
       options
-    }} />
+    } as DropdownProps<string>} />
   );
 };
 
