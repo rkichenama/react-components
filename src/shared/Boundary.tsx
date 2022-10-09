@@ -7,23 +7,27 @@ type BoundaryProps = {
 }
 
 class Boundary extends React.Component<BoundaryProps, { error: any }> {
-  public state = {
-    error: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = { error: false };
+  }
 
-  static getDerivedStateFromError (error) {
+  static getDerivedStateFromError(error) {
     return { error };
   }
 
-  componentDidCatch (error, errorInfo) {
+  componentDidCatch(error, errorInfo) {
     console.groupCollapsed('Caught Error');
     console.info(error);
     console.info(errorInfo);
     console.groupEnd();
   }
 
-  render () {
-    return !this.state.error ? this.props.children : (
+  render() {
+    const { children } = this.props;
+    const { error } = this.state;
+
+    return !error ? children : (
       <section className='bad'>
         An unhandled error occurred.
       </section>

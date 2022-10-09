@@ -5,6 +5,7 @@ import { Prev, Next } from '../../icons';
 
 interface Paginator {
   totalItems?: number;
+  // eslint-disable-next-line no-unused-vars
   onPaginationChange?: (options: { page?: number, pageSize?: number}) => void;
   page?: number;
   pageSize?: number;
@@ -23,12 +24,14 @@ const options = [
 ];
 const minPageSize = Math.min(...options.map(({ value }) => value));
 
-const Pagination = ({ totalItems = 0, page = 1, pageSize = minPageSize, onPaginationChange }: Paginator) => {
+function Pagination({
+  totalItems = 0, page = 1, pageSize = minPageSize, onPaginationChange,
+}: Paginator) {
   const [pages, pagesLabel] = React.useMemo(() => {
     const pages = Math.ceil(totalItems / pageSize);
     return [
       pages,
-      Pages.format(pages).replace(/wk/, 'page')
+      Pages.format(pages).replace(/wk/, 'page'),
     ];
   }, [totalItems, pageSize]);
 
@@ -36,7 +39,7 @@ const Pagination = ({ totalItems = 0, page = 1, pageSize = minPageSize, onPagina
     const { dir } = currentTarget.dataset;
     const newPage = page + (dir === 'right' ? 1 : -1);
     onPaginationChange?.({ page: newPage });
-  }, [page, pages]);
+  }, [onPaginationChange, page]);
 
   return totalItems <= minPageSize ? null : (
     <Container>
@@ -45,14 +48,18 @@ const Pagination = ({ totalItems = 0, page = 1, pageSize = minPageSize, onPagina
         <Move data-dir='left' onClick={handleMove} disabled={page === 1}>
           <Prev />
         </Move>
-        <Jump value={page} max={pages} onChange={({ target }) => {
-          const newPage = target.valueAsNumber;
-          if (newPage) {
-            onPaginationChange?.({
-              page: newPage,
-            });
-          }
-        }}/>
+        <Jump
+          value={page}
+          max={pages}
+          onChange={({ target }) => {
+            const newPage = target.valueAsNumber;
+            if (newPage) {
+              onPaginationChange?.({
+                page: newPage,
+              });
+            }
+          }}
+        />
         <Move data-dir='right' onClick={handleMove} disabled={page === pages}>
           <Next />
         </Move>
@@ -72,7 +79,7 @@ const Pagination = ({ totalItems = 0, page = 1, pageSize = minPageSize, onPagina
       </Right>
     </Container>
   );
-};
+}
 
 const Left = styled.div`
   color: ${({ theme }) => theme.colors.fg};
@@ -87,6 +94,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   margin: 4px 0;
+
   /* border-radius: 1ic / 50%;
   outline: 1px solid ${({ theme }) => theme.colors.grays.jet}; */
 
@@ -98,7 +106,7 @@ const Container = styled.div`
 
   > * {
     padding: 0.5ic 1ic;
-    padding: 4px 4px 6px 4px;
+    padding: 4px 4px 6px;
   }
 
   ${Left},

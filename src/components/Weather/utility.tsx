@@ -21,11 +21,10 @@ export const RelativeDays = (stamp: string) => {
 export const RelativeHours = (stamp: string) => {
   // @ts-ignore
   const diff = new Date(stamp) - new Date();
-  const diffHours = Math.ceil(diff / (1000 * 60 * 60))
+  const diffHours = Math.ceil(diff / (1000 * 60 * 60));
 
   return rel.format(diffHours, 'hour');
 };
 export const format = (stamp: string, f: Intl.DateTimeFormat = Day) => (
   f.format(new Date(stamp)).replace(/24:/g, '00:')
 );
-

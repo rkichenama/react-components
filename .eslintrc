@@ -1,0 +1,181 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base/rules/best-practices",
+    "airbnb-base/rules/errors",
+    "airbnb-base/rules/es6",
+    "airbnb-base/rules/imports",
+    "airbnb-base/rules/imports",
+    "airbnb-base/rules/style",
+    "airbnb/rules/react-a11y",
+    "airbnb/rules/react-hooks",
+    "airbnb/rules/react",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "plugin:promise/recommended"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/*.stories.*"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": 0
+      }
+    },
+    {
+      "files": [
+        "**/types.ts"
+      ],
+      "rules": {
+        "no-unused-vars": 0
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "promise"
+  ],
+  "reportUnusedDisableDirectives": true,
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": 1,
+    "@typescript-eslint/no-unused-vars": 0,
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "consistent-return": 0,
+    "default-case": 0,
+    "func-names": "error",
+    "generator-star-spacing": [
+      "error",
+      "after"
+    ],
+    "import/extensions": [
+      "error",
+      {
+        ".js": "always",
+        ".jsx": "always",
+        ".ts": "always",
+        ".tsx": "always"
+      }
+    ],
+    "import/named": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
+    "indent": [
+      "error",
+      2,
+      {
+        "ArrayExpression": 1,
+        "CallExpression": {
+          "arguments": 1
+        },
+        "flatTernaryExpressions": false,
+        "FunctionDeclaration": {
+          "body": 1,
+          "parameters": 1
+        },
+        "FunctionExpression": {
+          "body": 1,
+          "parameters": 1
+        },
+        "ignoreComments": false,
+        "ImportDeclaration": 1,
+        "ObjectExpression": 1,
+        "outerIIFEBody": 1,
+        "SwitchCase": 1,
+        "VariableDeclarator": 1
+      }
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-single"
+    ],
+    "linebreak-style": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "no-alert": "error",
+    "no-bitwise": 0,
+    "no-console": 1,
+    "no-constant-condition": "error",
+    "no-nested-ternary": 0,
+    "no-restricted-syntax": [
+      "error",
+      {
+        "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.",
+        "selector": "ForInStatement"
+      },
+      {
+        "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
+        "selector": "LabeledStatement"
+      },
+      {
+        "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+        "selector": "WithStatement"
+      }
+    ],
+    "no-underscore-dangle": 0,
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^(_|rest|others)",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "consistent": true,
+        "minProperties": 4
+      }
+    ],
+    "operator-linebreak": [
+      "error",
+      "before",
+      {
+        "overrides": {
+          "-=": "after",
+          "+=": "after",
+          "=": "after"
+        }
+      }
+    ],
+    "promise/prefer-await-to-callbacks": "error",
+    "promise/prefer-await-to-then": "error",
+    "react/forbid-foreign-prop-types": "error",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    ],
+    "react/jsx-indent": [
+      "error",
+      2
+    ],
+    "react/jsx-indent-props": [
+      "error",
+      2
+    ],
+    "react/jsx-props-no-spreading": 0,
+    "react/no-array-index-key": 1,
+    "react/no-danger": "error",
+    "react/prop-types": 0,
+    "react/require-default-props": 0
+  }
+}

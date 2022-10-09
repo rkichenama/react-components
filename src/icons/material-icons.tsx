@@ -10,23 +10,23 @@ const iconStyle = `
 `;
 
 const GoogleMaterialIcons = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-  @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
-  @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
-  @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
-  @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone');
-  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
+  @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+  @import 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined';
+  @import 'https://fonts.googleapis.com/icon?family=Material+Icons+Round';
+  @import 'https://fonts.googleapis.com/icon?family=Material+Icons+Sharp';
+  @import 'https://fonts.googleapis.com/icon?family=Material+Icons+Two+Tone';
+  @import 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0';
 
   .material-icons,
   .material-icons-sharp,
   .material-icons-two-tone,
   .material-icons-outlined,
   .material-icons-round {
-    -webkit-font-feature-settings: "liga";
+    -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
     direction: ltr;
     display: inline-block;
-    font-feature-settings: "liga";
+    font-feature-settings: 'liga';
     font-size: unset;
     font-style: normal;
     font-weight: normal;
@@ -37,13 +37,14 @@ const GoogleMaterialIcons = createGlobalStyle`
     white-space: nowrap;
     word-wrap: normal;
   }
-  .material-icons { font-family: "Material Icons"; }
-  .material-icons-outlined { font-family: "Material Icons Outlined"; }
-  .material-icons-round { font-family: "Material Icons Round"; }
-  .material-icons-two-tone { font-family: "Material Icons Two Tone"; }
-  .material-icons-sharp { font-family: "Material Icons Sharp"; }
+  .material-icons { font-family: 'Material Icons'; }
+  .material-icons-outlined { font-family: 'Material Icons Outlined'; }
+  .material-icons-round { font-family: 'Material Icons Round'; }
+  .material-icons-two-tone { font-family: 'Material Icons Two Tone'; }
+  .material-icons-sharp { font-family: 'Material Icons Sharp'; }
   .material-symbols-outlined {
     font-family: 'Material Symbols Outlined';
+    font-feature-settings: 'liga';
     font-weight: normal;
     font-style: normal;
     font-size: 1em;
@@ -103,7 +104,7 @@ export const RightArrow = styled(({ className, ...rest }) => (
 export const Close = styled(({ className, ...rest }) => (
   <>
     <GoogleMaterialIcons />
-    <span {...{ className: `material-icons ${className}`, }} >
+    <span {...{ className: `material-icons ${className}` }}>
       close
     </span>
   </>

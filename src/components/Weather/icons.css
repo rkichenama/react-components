@@ -2,6 +2,7 @@
 
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
+  font-feature-settings: 'liga';
   font-weight: normal;
   font-style: normal;
   font-size: 1em;

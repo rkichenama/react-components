@@ -4,13 +4,15 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 /* istanbul ignore next */
-export const Spinner = (props: any = {}) => (
-  <Svg {...props}>
-    <Path>
-      <Animate />
-    </Path>
-  </Svg>
-);
+export function Spinner(props: any = {}) {
+  return (
+    <Svg {...props}>
+      <Path>
+        <Animate />
+      </Path>
+    </Svg>
+  );
+}
 
 const Svg = styled.svg.attrs({
   xmlns: 'http://www.w3.org/2000/svg',
@@ -22,6 +24,7 @@ const Svg = styled.svg.attrs({
   display: block;
 `;
 const Path = styled.path.attrs({
+  // eslint-disable-next-line max-len
   d: 'M24.3 30C11.4 30 5 43.3 5 50s6.4 20 19.3 20c19.3 0 32.1-40 51.4-40C88.6 30 95 43.3 95 50s-6.4 20-19.3 20c-19.3 0-32.1-40-51.4-40z',
 })`
   scale: -1;
@@ -29,10 +32,10 @@ const Path = styled.path.attrs({
   transform-origin: 50px 50px;
   stroke: ${({ theme }) => theme.colors.alert.info};
   stroke-linecap: round;
-  stroke-dasharray: 175.48047119140625 82.10845703125;
+  stroke-dasharray: 175.4805 82.1085;
   stroke-width: 5;
   fill: none;
-  filter: drop-shadow(0px 0px 0px black);
+  filter: drop-shadow(0 0 0 black);
 `;
 const Animate = styled.div.attrs({
   as: 'animate',

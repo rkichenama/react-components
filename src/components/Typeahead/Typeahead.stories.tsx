@@ -13,13 +13,15 @@ export default {
       description: 'the label for the input',
     },
     size: {
-      control: { type: 'number', min: 12, max: 120, step: 4 },
-      description: 'width in number of characters'
+      control: {
+        type: 'number', min: 12, max: 120, step: 4,
+      },
+      description: 'width in number of characters',
     },
     icon: {
-      control: { type:'select', options: ['none', 'reddit'] },
+      control: { type: 'select', options: ['none', 'reddit'] },
       description: 'the icon for the left side of the input',
-    }
+    },
   },
 } as ComponentMeta<typeof Component>;
 
@@ -31,7 +33,9 @@ const options = [
   { value: 'Option 5 dawn' },
 ];
 
-export const Typeahead = ({ label, placeholder, size, icon }) => {
+export function Typeahead({
+  label, placeholder, size, icon,
+}) {
   const [value, onChange] = React.useState('');
   const [selection, setSelection] = React.useState('');
   const [isLoading, setLoading] = React.useState(false);
@@ -43,7 +47,7 @@ export const Typeahead = ({ label, placeholder, size, icon }) => {
     value
       ? options.filter((o) => o.value.toLowerCase().includes(value.toLowerCase()))
       : options
-  ), [value, options]);
+  ), [value]);
 
   React.useEffect(() => {
     setLoading(true);
@@ -62,8 +66,11 @@ export const Typeahead = ({ label, placeholder, size, icon }) => {
 
   return (
     <Component {...{
-      value, placeholder,
-      label, validationMessage, size,
+      value,
+      placeholder,
+      label,
+      validationMessage,
+      size,
       icon: /reddit/i.test(icon) ? <Reddit /> : null,
       onChange,
       options: filteredOptions,
@@ -71,10 +78,11 @@ export const Typeahead = ({ label, placeholder, size, icon }) => {
       selection,
       onSelectionChange: (selected) => {
         setSelection(selected as string);
-      }
-    }} />
+      },
+    }}
+    />
   );
-};
+}
 
 Typeahead.args = {
   label: 'Typeahead',

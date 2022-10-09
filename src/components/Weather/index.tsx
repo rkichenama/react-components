@@ -2,19 +2,18 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { OpenMeteoResponse, WeatherProps } from './types';
 import { fetchWeather } from './fetchWeather';
-import { CurrentConditions, HourlyForecast, DailyForecast, Currently } from './sections';
+import {
+  CurrentConditions, HourlyForecast, DailyForecast, Currently,
+} from './sections';
+import { WeatherContext } from './context';
 
-export const WeatherContext = React.createContext({
-  showDescription: true,
-  cardCount: 5,
-  system: 'us',
-  setSystem: (system: string) => {}
- });
-
-const Weather = ({ cardCount = 5, showDescription = true }: WeatherProps) => {
+function Weather({ cardCount = 5, showDescription = true }: WeatherProps) {
   const [system, setSystem] = React.useState('us');
   const [forecast, setForecast] = React.useState<OpenMeteoResponse | { error: any }>({} as OpenMeteoResponse);
 
+  const value = React.useMemo(() => ({
+    system, setSystem, cardCount, showDescription,
+  }), [cardCount, showDescription, system]);
   React.useEffect(() => {
     fetchWeather(setForecast, system);
   }, [system]);
@@ -26,7 +25,7 @@ const Weather = ({ cardCount = 5, showDescription = true }: WeatherProps) => {
   return 'error' in forecast ? (
     <div>An error occurred</div>
   ) : (
-    <WeatherContext.Provider value={{ system, setSystem, cardCount, showDescription }}>
+    <WeatherContext.Provider {...{ value }}>
       <Conditions>
         <CurrentConditions {...forecast} />
         <HourlyForecast {...forecast} />
@@ -34,7 +33,7 @@ const Weather = ({ cardCount = 5, showDescription = true }: WeatherProps) => {
       </Conditions>
     </WeatherContext.Provider>
   );
-};
+}
 
 const Conditions = styled.div`
   font-family: ${({ theme }) => theme.fonts.firaSans};

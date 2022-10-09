@@ -17,7 +17,7 @@ const baseOptions = {
   hourly: 'temperature_2m,weathercode',
   daily: 'temperature_2m_max,temperature_2m_min,precipitation_hours,weathercode',
 };
-export const fetchWeather = (lisener: (json: OpenMeteoResponse | { error: any; }) => void, unit: string = 'us') => {
+export const fetchWeather = (lisener: (_json: OpenMeteoResponse | { error: any; }) => void, unit = 'us') => {
   navigator.geolocation.getCurrentPosition(
     async ({ coords: { latitude, longitude } }) => {
       const params = new URLSearchParams({
@@ -31,12 +31,13 @@ export const fetchWeather = (lisener: (json: OpenMeteoResponse | { error: any; }
 
       lisener(
         camelizeKeys(
-          await window.fetch(`https://api.open-meteo.com/v1/forecast?${params}`).then(response => response.json())
-        )
+          await window.fetch(`https://api.open-meteo.com/v1/forecast?${params}`).then((response) => response.json()),
+        ),
       );
     },
-    error => {
+    // eslint-disable-next-line promise/prefer-await-to-callbacks
+    (error) => {
       lisener({ error });
-    }
+    },
   );
 };

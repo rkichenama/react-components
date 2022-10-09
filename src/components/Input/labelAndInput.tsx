@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
+import { LabelProps } from './types';
 
 export const inputPadding = '0.25em 0.25em';
-export const Container = styled.div.attrs<{ size?: number; }>({}) <{ size?: number; }> `
+export const Container = styled.div.attrs<{ size?: number; }>({}) <{ size?: number; }>`
   max-width: 500px;
-  ${({ size }) => size ? `width: ${size}ex;` : ''}
+  ${({ size }) => (size ? `width: ${size}ex;` : '')}
 
-  &, & * {
+  &,
+  & * {
     box-sizing: border-box;
   }
 `;
@@ -14,12 +16,13 @@ const activeLabelStyle = css`
   font-size: ${({ theme }) => theme.fontSize.sm};
   background-color: ${({ theme }) => theme.colors.bg};
 `;
-export const Label = styled.label.attrs<{ active: boolean; hasIcon: boolean; }>({}) <{ active: boolean; hasIcon: boolean; }> `
+
+export const Label = styled.label.attrs<LabelProps>({}) <LabelProps>`
   position: absolute;
   padding: 2px 4px;
-  left: ${({ hasIcon }) => hasIcon ? 2 : 1}ex;
+  left: ${({ hasIcon }) => (hasIcon ? 2 : 1)}ex;
   transition: transform 0.2s ease-in-out;
-  ${({ active }) => active ? activeLabelStyle : ''}
+  ${({ active }) => (active ? activeLabelStyle : '')}
 
   &:empty {
     display: none;
@@ -40,17 +43,17 @@ export const FakeInput = styled.div<{ isInvalid: boolean }>`
 
   &:not(:focus-within):hover {
     outline: 1px solid ${({ theme, isInvalid }) => (
-      isInvalid
-        ? theme.colors.alert.danger
-        : theme.colors.alert.info
-    )};
+    isInvalid
+      ? theme.colors.alert.danger
+      : theme.colors.alert.info
+  )};
   }
   &:focus-within {
     outline: 2px solid ${({ theme, isInvalid }) => (
-      isInvalid
-        ? theme.colors.alert.danger
-        : theme.colors.alert.info
-    )};
+    isInvalid
+      ? theme.colors.alert.danger
+      : theme.colors.alert.info
+  )};
 
     ${Label} {
       ${activeLabelStyle}

@@ -8,9 +8,9 @@ export interface CurrentWeather {
 
 export interface Units {
   time: string;
-  temperature2m?: "°F" | "°C";
-  temperature2mMax?: "°F" | "°C";
-  temperature2mMin?: "°F" | "°C";
+  temperature2m?: '°F' | '°C';
+  temperature2mMax?: '°F' | '°C';
+  temperature2mMin?: '°F' | '°C';
   precipitationHours?: string;
 }
 
@@ -41,4 +41,4 @@ export interface OpenMeteoResponse {
 export interface WeatherProps {
   cardCount: number;
   showDescription: boolean;
-};
+}

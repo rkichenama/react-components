@@ -13,21 +13,27 @@ export default {
       description: 'the label for the input',
     },
     size: {
-      control: { type: 'number', min: 12, max: 120, step: 4 },
-      description: 'width in number of characters'
+      control: {
+        type: 'number', min: 12, max: 120, step: 4,
+      },
+      description: 'width in number of characters',
     },
     maxCharacters: {
-      control: { type: 'number', min: 0, max: 40, step: 2 },
-      description: 'non-zero number of max characters allowed'
+      control: {
+        type: 'number', min: 0, max: 40, step: 2,
+      },
+      description: 'non-zero number of max characters allowed',
     },
     icon: {
-      control: { type:'select', options: ['none', 'reddit'] },
+      control: { type: 'select', options: ['none', 'reddit'] },
       description: 'the icon for the left side of the input',
-    }
+    },
   },
-} as ComponentMeta<typeof Component>
+} as ComponentMeta<typeof Component>;
 
-export const Input = ({ label, placeholder, maxCharacters, size, icon }) => {
+export function Input({
+  label, placeholder, maxCharacters, size, icon,
+}) {
   const [value, onChange] = React.useState('');
   const validationMessage = React.useMemo(() => (
     !!maxCharacters && (value.length > maxCharacters) ? 'You have exceeded the character allotment' : ''
@@ -35,10 +41,18 @@ export const Input = ({ label, placeholder, maxCharacters, size, icon }) => {
 
   return (
     <Component {...{
-      value, onChange, label, placeholder, maxCharacters, validationMessage, size, icon: /reddit/i.test(icon) ? <Reddit /> : null
-    }} />
+      value,
+      onChange,
+      label,
+      placeholder,
+      maxCharacters,
+      validationMessage,
+      size,
+      icon: /reddit/i.test(icon) ? <Reddit /> : null,
+    }}
+    />
   );
-};
+}
 
 Input.args = {
   label: 'Input',
@@ -46,4 +60,4 @@ Input.args = {
   maxCharacters: 0,
   size: 20,
   icon: null,
-}
+};

@@ -117,7 +117,7 @@ export const theme: DefaultTheme = {
       springGreen: '#1edca0',
       lapis: '#23add7',
       cobalt: '#4c70dc',
-      lightPurple: '#aa74f1'
+      lightPurple: '#aa74f1',
     },
     rainbow2: {
       magentaCrayola: '#e65aae',
@@ -198,7 +198,7 @@ export const theme: DefaultTheme = {
       darkPurple: '#312244',
       darkPurple2: '#3e1f47',
       palatinatePurple: '#4d194d',
-    }
+    },
   },
   layers: {
     underneath: -12,
@@ -207,9 +207,9 @@ export const theme: DefaultTheme = {
     overlay: 40,
     dropdown: 50,
     topMost: 100,
-    popover: 900, //modal w/o background
+    popover: 900, // modal w/o background
     toast: 925,
-    loading: 950, //app level
+    loading: 950, // app level
     modal: 1000,
   },
   textShadow: `calc(var(--stroke-width, 1px) * 1) calc(var(--stroke-width, 1px) * 0) 0 var(--stroke-color, #000000),

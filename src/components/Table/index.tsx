@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import * as React from 'react';
 import styled from 'styled-components';
 
-type CellDataRenderer<T extends any> = (row: T, index: number, items: T[]) => string | number | React.ReactElement;
-type CellPropsRenderer<T extends any> = (row: T, index: number, items: T[]) => React.HTMLAttributes<HTMLTableCellElement>;
-type RowPropsRenderer<T extends any> = (row: T, index: number, items: T[]) => React.HTMLAttributes<HTMLTableRowElement>;
-interface ContextType<T extends any> {
+type CellDataRenderer<T> = (row: T, index: number, items: T[]) => string | number | React.ReactElement;
+type CellPropsRenderer<T> = (row: T, index: number, items: T[]) => React.HTMLAttributes<HTMLTableCellElement>;
+type RowPropsRenderer<T> = (row: T, index: number, items: T[]) => React.HTMLAttributes<HTMLTableRowElement>;
+interface ContextType<T> {
   /**
    * list of objects describing data to be displayed
    */
@@ -13,7 +14,7 @@ interface ContextType<T extends any> {
   cellProps?: CellPropsRenderer<T>;
   rowProps?: RowPropsRenderer<T>;
 }
-interface TableProps<T extends any> extends ContextType<T> {
+interface TableProps<T> extends ContextType<T> {
   id?: string;
   className?: string;
   /**
@@ -27,7 +28,9 @@ const TblCtx = React.createContext<ContextType<any>>({
   columns: [],
 });
 
-const Table = <T extends any>({ id, className, style, ...props}: TableProps<T>) => {
+function Table<T>({
+  id, className, style, ...props
+}: TableProps<T>) {
   return (
     <TblCtx.Provider value={props}>
       <Tbl {...{ id, className, style }}>
@@ -36,7 +39,7 @@ const Table = <T extends any>({ id, className, style, ...props}: TableProps<T>) 
       </Tbl>
     </TblCtx.Provider>
   );
-};
+}
 
 const Tbl = styled.table.attrs({})`
   background-color: ${({ theme }) => theme.colors.bg};
@@ -51,8 +54,7 @@ const Td = styled.td.attrs({})`
   padding: 0.25em 0.375em;
   text-shadow: ${({ theme }) => theme.textShadow};
 `;
-const Tr = styled.tr.attrs({})`
-`;
+const Tr = styled.tr.attrs({})``;
 const Tbody = styled.tbody.attrs({})`
   /* outline: 1px solid; */
 
@@ -73,12 +75,14 @@ const Tbody = styled.tbody.attrs({})`
 const Thead = styled.thead.attrs({})`
   /* outline: 1px solid; */
 
+  /* stylelint-disable no-descending-specificity */
   ${Td} {
     background-color: ${({ theme }) => theme.colors.darkAccent};
   }
+  /* stylelint-enable no-descending-specificity */
 `;
 
-const Header = () => {
+function Header() {
   const { columns, cellProps, rowProps } = React.useContext(TblCtx);
 
   const ths = React.useMemo(() => (
@@ -96,9 +100,11 @@ const Header = () => {
       <Tr {...rowProps?.(undefined, -1, [])}>{ths}</Tr>
     </Thead>
   );
-};
-const Body = () => {
-  const { columns, items, cellProps, rowProps } = React.useContext(TblCtx);
+}
+function Body() {
+  const {
+    columns, items, cellProps, rowProps,
+  } = React.useContext(TblCtx);
 
   const trs = React.useMemo(() => (
     items.map((row, y) => (
@@ -112,13 +118,13 @@ const Body = () => {
         ))}
       </Tr>
     ))
-  ), [columns, items]);
+  ), [cellProps, columns, items, rowProps]);
 
   return (
     <Tbody>
       {trs}
     </Tbody>
   );
-};
+}
 
 export default Table;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export interface InputProps
   extends Omit<React.HTMLAttributes<HTMLInputElement>,
   'onChange' | 'value' | 'defaultValue'>
@@ -10,4 +11,8 @@ export interface InputProps
   validationMessage?: string;
   maxCharacters?: number;
   size?: number;
+}
+export interface LabelProps {
+  active: boolean;
+  hasIcon: boolean;
 }

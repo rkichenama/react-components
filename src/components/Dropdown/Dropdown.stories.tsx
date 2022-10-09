@@ -14,13 +14,15 @@ export default {
       description: 'the label for the input',
     },
     size: {
-      control: { type: 'number', min: 12, max: 120, step: 4 },
-      description: 'width in number of characters'
+      control: {
+        type: 'number', min: 12, max: 120, step: 4,
+      },
+      description: 'width in number of characters',
     },
     icon: {
-      control: { type:'select', options: ['none', 'reddit'] },
+      control: { type: 'select', options: ['none', 'reddit'] },
       description: 'the icon for the left side of the input',
-    }
+    },
   },
 } as ComponentMeta<typeof Component>;
 
@@ -31,7 +33,9 @@ const options: DropdownOption<string>[] = [
   { label: 'Four', value: 'four' },
   { label: 'Five', value: 'five' },
 ];
-export const Dropdown = ({ label, placeholder, size, icon }) => {
+export function Dropdown({
+  label, placeholder, size, icon,
+}) {
   const [value, onChange] = React.useState('');
 
   const validationMessage = React.useMemo(() => (
@@ -40,20 +44,24 @@ export const Dropdown = ({ label, placeholder, size, icon }) => {
 
   return (
     <Component {...{
-      value, placeholder,
-      label, validationMessage, size,
+      value,
+      placeholder,
+      label,
+      validationMessage,
+      size,
       icon: /reddit/i.test(icon) ? <Reddit /> : null,
       onChange(selected) {
         onChange(selected);
       },
-      options
-    } as DropdownProps<string>} />
+      options,
+    } as DropdownProps<string>}
+    />
   );
-};
+}
 
 Dropdown.args = {
   label: 'Dropdown',
   placeholder: 'placeholder',
   size: 20,
   icon: null,
-}
+};

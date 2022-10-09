@@ -1,10 +1,11 @@
-export type DropdownOption<T extends any> = {
+/* eslint-disable no-unused-vars */
+export type DropdownOption<T> = {
   // used only for UI, if available
   label?: any;
   value: T;
 };
 
-export interface DropdownProps<T extends any>
+export interface DropdownProps<T>
   extends Omit<React.HTMLAttributes<HTMLInputElement>,
   'onChange' | 'value' | 'defaultValue'>
 {
