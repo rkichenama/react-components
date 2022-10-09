@@ -32,7 +32,7 @@ export const FakeInput = styled.div<{ isInvalid: boolean }>`
   outline: 1px solid ${({ theme, isInvalid }) => (
     isInvalid
       ? theme.colors.alert.danger
-      : theme.colors.fg
+      : theme.colors.grays.jet
   )};
   font-size: ${({ theme }) => theme.fontSize.reg};
   background-color: ${({ theme }) => theme.colors.bg};

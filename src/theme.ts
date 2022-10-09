@@ -1,6 +1,72 @@
 import { DefaultTheme } from 'styled-components';
 
+const cutBorder = `
+& {
+  // --background: black;
+  // --border-color: linear-gradient(to bottom right, red, purple, blue);
+  // --border-width: 2px;
+  // --edge-size: 0.75rem;
+
+  isolation: isolate;
+  position: relative;
+  padding: calc(var(--border-width) * 2) var(--edge-size);
+  border: 0;
+
+  &::before, &::after {
+    content: '';
+    inset: 0;
+    position: absolute;
+  }
+
+  &::before {
+    background: var(--border-color);
+    z-index: -2;
+    clip-path: polygon(
+      /* top left */
+      var(--edge-size) 0%,
+      /* top right */
+      calc(100% - var(--edge-size)) 0%,
+
+      /* right center */
+      100% 50%,
+
+      /* right bottom */
+      calc(100% - var(--edge-size)) 100%,
+      /* left bottom */
+      var(--edge-size) 100%,
+
+      /* left center */
+      0% 50%
+    );
+  }
+
+  &::after {
+    --insetY: calc(var(--border-width) * 0.7071067811865476);
+    --insetX: calc(var(--border-width) * 0.49999999999999994);
+    background: var(--background);
+    z-index: -1;
+    clip-path: polygon(
+      /* top left */
+      calc(var(--edge-size) + var(--insetX)) var(--insetY),
+      /* top right */
+      calc(100% - var(--edge-size) - var(--insetX)) var(--insetY),
+
+      /* right center */
+      calc(100% - var(--border-width)) 50%,
+
+      /* right bottom */
+      calc(100% - var(--edge-size) - var(--insetX)) calc(100% - var(--insetY)),
+      /* left bottom */
+      calc(var(--edge-size) + var(--insetX)) calc(100% - var(--insetY)),
+
+      /* left center */
+      var(--border-width) 50%
+    );
+  }
+}
+`;
 export const theme: DefaultTheme = {
+  cutBorder,
   // todo maybe consolidate all the fonts under one?
   fonts: {
     abel: 'Abel',

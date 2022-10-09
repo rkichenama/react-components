@@ -86,12 +86,19 @@ const Right = styled.div`
 const Container = styled.div`
   display: flex;
   align-items: center;
-  border-radius: 1ic / 50%;
-  outline: 1px solid ${({ theme }) => theme.colors.grays.jet};
-  background-color: ${({ theme }) => theme.colors.bg};
+  margin: 4px 0;
+  /* border-radius: 1ic / 50%;
+  outline: 1px solid ${({ theme }) => theme.colors.grays.jet}; */
+
+  ${({ theme }) => theme.cutBorder}
+  --background: ${({ theme }) => theme.colors.bg};
+  --border-color: ${({ theme }) => theme.colors.grays.jet};
+  --border-width: 1px;
+  --edge-size: 0.75em;
 
   > * {
     padding: 0.5ic 1ic;
+    padding: 4px 4px 6px 4px;
   }
 
   ${Left},
