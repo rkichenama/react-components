@@ -124,7 +124,7 @@ const Jump = styled.input.attrs({
   color: ${({ theme }) => theme.colors.fg};
   background: ${({ theme }) => theme.colors.grays.eerieBlack};
   border: none;
-  outline: 1px solid ${({ theme }) => theme.colors.fg};
+  outline: 1px solid ${({ theme }) => theme.colors.grays.jet};
   outline-offset: -1px;
 
   &:not(:focus-within):hover {
@@ -139,7 +139,7 @@ const Move = styled.button.attrs({})`
   border: none;
   color: ${({ theme }) => theme.colors.fg};
   background: ${({ theme }) => theme.colors.grays.eerieBlack};
-  outline: 1px solid ${({ theme }) => theme.colors.fg};
+  outline: 1px solid ${({ theme }) => theme.colors.grays.jet};
   outline-offset: -1px;
 
   &:not([disabled]) {

@@ -6,7 +6,10 @@
   "scripts": {
     "types": "npx typac ini -i",
     "storybook": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
-    "build-storybook": "export NODE_OPTIONS=--openssl-legacy-provider && build-storybook -o ./docs"
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
+    "build-storybook": "export NODE_OPTIONS=--openssl-legacy-provider && build-storybook -o ./docs",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && build-storybook -o ./docs",
+    "postbuild": "git add . && git cm 'build' && git push"
   },
   "keywords": [],
   "author": "Richard Kichenama <rkichenama@gmail.com>",
