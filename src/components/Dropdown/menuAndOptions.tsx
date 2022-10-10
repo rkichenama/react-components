@@ -25,13 +25,13 @@ type OptionItem = DropdownOption<any> & {
   onMouseEnter?: React.MouseEventHandler<HTMLDivElement>;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 };
-const ItemDisplay = styled.div<OptionItem>`
+export const ItemDisplay = styled.div<OptionItem>`
   display: flex;
   padding: 0.125em 0.25em;
 `;
-export function Item({
+export const Item = ({
   label, value, selected, index, ...rest
-}: OptionItem & { index: number; }) {
+}: OptionItem & { index: number; }) => {
   return (
     <ItemDisplay {...{ label, value, ...rest }} data-index={index}>
       <ItemSelected>
@@ -40,7 +40,7 @@ export function Item({
       <ItemValue>{label || value}</ItemValue>
     </ItemDisplay>
   );
-}
+};
 const ItemSelected = styled.div`
   display: flex;
   align-items: center;

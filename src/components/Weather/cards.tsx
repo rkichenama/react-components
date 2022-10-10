@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { CardProps } from './types';
 
 export const ForecastDeck = styled.ul`
   list-style: none;
@@ -10,7 +11,7 @@ export const ForecastDeck = styled.ul`
   grid-template-columns: repeat(5, 1fr);
   gap: 1ex;
 `;
-export function Card({ img, temp, desc }: { img: string | JSX.Element; temp: string | number; desc?: JSX.Element; }) {
+export const Card = ({ img, temp, desc }: CardProps) => {
   return (
     <ForcastCard>
       <Icon>{img}</Icon>
@@ -18,7 +19,7 @@ export function Card({ img, temp, desc }: { img: string | JSX.Element; temp: str
       {desc && <Desc>{desc}</Desc>}
     </ForcastCard>
   );
-}
+};
 const ForcastCard = styled.li`
   display: grid;
   width: 100%;

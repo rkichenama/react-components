@@ -4,7 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 /* istanbul ignore next */
-export function Spinner(props: any = {}) {
+export const Spinner = (props: any = {}) => {
   return (
     <Svg {...props}>
       <Path>
@@ -12,7 +12,7 @@ export function Spinner(props: any = {}) {
       </Path>
     </Svg>
   );
-}
+};
 
 const Svg = styled.svg.attrs({
   xmlns: 'http://www.w3.org/2000/svg',

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Dropdown from '../Dropdown';
 import { Prev, Next } from '../../icons';
 
-interface Paginator {
+export interface PaginationProps {
   totalItems?: number;
   // eslint-disable-next-line no-unused-vars
   onPaginationChange?: (options: { page?: number, pageSize?: number}) => void;
@@ -24,9 +24,9 @@ const options = [
 ];
 const minPageSize = Math.min(...options.map(({ value }) => value));
 
-function Pagination({
+const Pagination = ({
   totalItems = 0, page = 1, pageSize = minPageSize, onPaginationChange,
-}: Paginator) {
+}: PaginationProps) => {
   const [pages, pagesLabel] = React.useMemo(() => {
     const pages = Math.ceil(totalItems / pageSize);
     return [
@@ -79,7 +79,7 @@ function Pagination({
       </Right>
     </Container>
   );
-}
+};
 
 const Left = styled.div`
   color: ${({ theme }) => theme.colors.fg};

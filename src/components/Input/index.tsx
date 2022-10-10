@@ -7,12 +7,12 @@ import { OptionalIcon, StatusIcon } from './icons';
 import { InputProps } from './types';
 import { OptionalInfo, Message, Count } from './optionalBlocks';
 
-function TextInput({
+const TextInput = ({
   size, label, value,
   onChange, helperText, validationMessage,
   maxCharacters, placeholder, icon,
   ...field
-}: InputProps): JSX.Element {
+}: InputProps): JSX.Element => {
   const actualInput = React.useRef(undefined as unknown as HTMLInputElement);
 
   const hasValue = !!value?.length;
@@ -69,6 +69,6 @@ function TextInput({
       </OptionalInfo>
     </Container>
   );
-}
+};
 
 export default TextInput;

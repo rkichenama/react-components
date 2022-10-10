@@ -21,7 +21,7 @@ const Attribution = styled.a.attrs({
   }
 `;
 
-export function CurrentConditions({ currentWeather: { weathercode: key, temperature } }: OpenMeteoResponse) {
+export const CurrentConditions = ({ currentWeather: { weathercode: key, temperature } }: OpenMeteoResponse) => {
   const { system, setSystem, showDescription } = React.useContext(WeatherContext);
 
   let Img = weatherCodeIcons.get(key) ?? '';
@@ -53,8 +53,8 @@ export function CurrentConditions({ currentWeather: { weathercode: key, temperat
       <Attribution />
     </Currently>
   );
-}
-export function HourlyForecast({ hourly: { time, temperature2m, weathercode } }: OpenMeteoResponse) {
+};
+export const HourlyForecast = ({ hourly: { time, temperature2m, weathercode } }: OpenMeteoResponse) => {
   const { showDescription, cardCount } = React.useContext(WeatherContext);
   const offset = (new Date()).getHours() + 1;
 
@@ -84,10 +84,10 @@ export function HourlyForecast({ hourly: { time, temperature2m, weathercode } }:
       })}
     </ForecastDeck>
   );
-}
-export function DailyForecast({ daily: {
+};
+export const DailyForecast = ({ daily: {
   time, temperature2mMax, temperature2mMin, weathercode,
-} }: OpenMeteoResponse) {
+} }: OpenMeteoResponse) => {
   const { showDescription, cardCount } = React.useContext(WeatherContext);
 
   return (
@@ -116,7 +116,7 @@ export function DailyForecast({ daily: {
       })}
     </ForecastDeck>
   );
-}
+};
 export const Currently = styled.div`
   display: grid;
   width: 100%;

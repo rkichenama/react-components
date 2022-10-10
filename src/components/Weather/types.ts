@@ -14,6 +14,12 @@ export interface Units {
   precipitationHours?: string;
 }
 
+export interface CardProps {
+  img: string | JSX.Element;
+  temp: string | number;
+  desc?: JSX.Element;
+}
+
 export interface OpenMeteoResponse {
   latitude: number;
   longitude: number;

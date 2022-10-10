@@ -28,9 +28,10 @@ const TblCtx = React.createContext<ContextType<any>>({
   columns: [],
 });
 
-function Table<T>({
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
+const Table = <T extends any>({
   id, className, style, ...props
-}: TableProps<T>) {
+}: TableProps<T>) => {
   return (
     <TblCtx.Provider value={props}>
       <Tbl {...{ id, className, style }}>
@@ -39,7 +40,7 @@ function Table<T>({
       </Tbl>
     </TblCtx.Provider>
   );
-}
+};
 
 const Tbl = styled.table.attrs({})`
   background-color: ${({ theme }) => theme.colors.bg};
@@ -82,7 +83,7 @@ const Thead = styled.thead.attrs({})`
   /* stylelint-enable no-descending-specificity */
 `;
 
-function Header() {
+const Header = () => {
   const { columns, cellProps, rowProps } = React.useContext(TblCtx);
 
   const ths = React.useMemo(() => (
@@ -100,8 +101,8 @@ function Header() {
       <Tr {...rowProps?.(undefined, -1, [])}>{ths}</Tr>
     </Thead>
   );
-}
-function Body() {
+};
+const Body = () => {
   const {
     columns, items, cellProps, rowProps,
   } = React.useContext(TblCtx);
@@ -125,6 +126,6 @@ function Body() {
       {trs}
     </Tbody>
   );
-}
+};
 
 export default Table;

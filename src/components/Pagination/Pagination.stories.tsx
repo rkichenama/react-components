@@ -19,7 +19,7 @@ export default {
   },
 } as ComponentMeta<typeof Component>;
 
-export function Pagination({ totalItems }) {
+export const Pagination = ({ totalItems }) => {
   const [opts, setPagination] = React.useState({ page: 1, pageSize: 10 });
 
   return (
@@ -33,13 +33,13 @@ export function Pagination({ totalItems }) {
       }
     />
   );
-}
+};
 
 Pagination.args = {
   totalItems: 5,
 };
 
-export function WithTable() {
+export const WithTable = () => {
   const [opts, setPagination] = React.useState({ page: 1, pageSize: 10 });
 
   const slice = React.useMemo(() => {
@@ -77,4 +77,4 @@ export function WithTable() {
       {pager}
     </>
   );
-}
+};

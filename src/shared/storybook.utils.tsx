@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { theme } from '../theme';
 
-export function SamplePage(Story: React.FC<any>) {
+export const SamplePage = (Story: React.FC<any>) => {
   return (
     <>
       <Themed />
@@ -11,7 +11,7 @@ export function SamplePage(Story: React.FC<any>) {
       </Article>
     </>
   );
-}
+};
 
 const Themed = createGlobalStyle`
   html,

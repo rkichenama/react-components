@@ -13,10 +13,12 @@ import { DropdownProps } from './types';
 import { Menu, Item } from './menuAndOptions';
 import { Tag, DisplayValue } from './valueDisplay';
 
-function Dropdown<T>({
-  size, label, value, onChange, options, helperText, validationMessage, placeholder, icon,
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
+const Dropdown = <T extends any>({
+  size, label, value, onChange, options,
+  helperText, validationMessage, placeholder, icon,
   ...field
-}: DropdownProps<T>): JSX.Element {
+}: DropdownProps<T>) => {
   const [open, setOpen] = React.useState(false);
   const [cursor, setCursor] = React.useState(-1);
 
@@ -126,6 +128,6 @@ function Dropdown<T>({
       </OptionalInfo>
     </Container>
   );
-}
+};
 
 export default Dropdown;

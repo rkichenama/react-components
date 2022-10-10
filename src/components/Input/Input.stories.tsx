@@ -31,9 +31,9 @@ export default {
   },
 } as ComponentMeta<typeof Component>;
 
-export function Input({
+export const Input = ({
   label, placeholder, maxCharacters, size, icon,
-}) {
+}) => {
   const [value, onChange] = React.useState('');
   const validationMessage = React.useMemo(() => (
     !!maxCharacters && (value.length > maxCharacters) ? 'You have exceeded the character allotment' : ''
@@ -52,7 +52,7 @@ export function Input({
     }}
     />
   );
-}
+};
 
 Input.args = {
   label: 'Input',

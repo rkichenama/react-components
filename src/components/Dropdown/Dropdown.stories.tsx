@@ -33,9 +33,9 @@ const options: DropdownOption<string>[] = [
   { label: 'Four', value: 'four' },
   { label: 'Five', value: 'five' },
 ];
-export function Dropdown({
+export const Dropdown = ({
   label, placeholder, size, icon,
-}) {
+}) => {
   const [value, onChange] = React.useState('');
 
   const validationMessage = React.useMemo(() => (
@@ -57,7 +57,7 @@ export function Dropdown({
     } as DropdownProps<string>}
     />
   );
-}
+};
 
 Dropdown.args = {
   label: 'Dropdown',

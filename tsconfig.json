@@ -15,6 +15,12 @@
     "target": "ESNext",
     "moduleResolution": "Node",
     "skipLibCheck": true,
+    "plugins": [
+      {
+        "transform": "typescript-plugin-styled-components",
+        "type": "config"
+      }
+    ]
   },
   "exclude": [
     "node_modules",

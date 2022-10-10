@@ -33,9 +33,9 @@ const options = [
   { value: 'Option 5 dawn' },
 ];
 
-export function Typeahead({
+export const Typeahead = ({
   label, placeholder, size, icon,
-}) {
+}) => {
   const [value, onChange] = React.useState('');
   const [selection, setSelection] = React.useState('');
   const [isLoading, setLoading] = React.useState(false);
@@ -82,7 +82,7 @@ export function Typeahead({
     }}
     />
   );
-}
+};
 
 Typeahead.args = {
   label: 'Typeahead',

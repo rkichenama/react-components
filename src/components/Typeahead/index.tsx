@@ -11,16 +11,16 @@ import {
 } from '../Input/optionalBlocks';
 import { Next as Caret } from '../../icons';
 import { TypeaheadProps } from './types';
-import { Menu, Item } from '../Dropdown/menuAndOptions';
+import { Menu, Item, ItemDisplay } from '../Dropdown/menuAndOptions';
 import { Tag, DisplayValue } from '../Dropdown/valueDisplay';
 import { Spinner } from '../Spinner';
 
-function Typeahead({
+const Typeahead = ({
   options, value, selection, icon, label, placeholder,
   helperText, validationMessage,
   size, isLoading,
   onChange, onSelectionChange, ...field
-}: TypeaheadProps<number | string>) {
+}: TypeaheadProps<number | string>) => {
   const [open, setOpen] = React.useState(false);
   const [cursor, setCursor] = React.useState(-1);
 
@@ -37,16 +37,18 @@ function Typeahead({
   const optionItems = React.useMemo(() => (
     isLoading
       ? <CenteredSpinner />
-      : options.map((option, index) => (
-        <Item
-          key={option.value}
-          {...option}
-          index={index}
-          selected={selection === option.value}
-          onMouseEnter={() => { setCursor(index); }}
-          onClick={() => { onSelectionChange?.(option.value); setOpen(false); }}
-        />
-      ))
+      : !options.length
+        ? <ZeroState />
+        : options.map((option, index) => (
+          <Item
+            key={option.value}
+            {...option}
+            index={index}
+            selected={selection === option.value}
+            onMouseEnter={() => { setCursor(index); }}
+            onClick={() => { onSelectionChange?.(option.value); setOpen(false); }}
+          />
+        ))
   ), [isLoading, options, selection, onSelectionChange]);
 
   const handleCursor = React.useCallback(({ key }: React.KeyboardEvent<HTMLInputElement>) => {
@@ -125,7 +127,7 @@ function Typeahead({
       </OptionalInfo>
     </Container>
   );
-}
+};
 
 const CenteredSpinner = styled.div.attrs({
   children: (<Spinner />),
@@ -137,4 +139,10 @@ const CenteredSpinner = styled.div.attrs({
   height: 100%;
   min-height: 60px;
 `;
+const ZeroState = styled(ItemDisplay).attrs({
+  children: 'There are no options matching input',
+  label: undefined,
+  value: undefined,
+})``;
+
 export default Typeahead;

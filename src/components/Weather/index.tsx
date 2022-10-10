@@ -7,7 +7,7 @@ import {
 } from './sections';
 import { WeatherContext } from './context';
 
-function Weather({ cardCount = 5, showDescription = true }: WeatherProps) {
+const Weather = ({ cardCount = 5, showDescription = true }: WeatherProps) => {
   const [system, setSystem] = React.useState('us');
   const [forecast, setForecast] = React.useState<OpenMeteoResponse | { error: any }>({} as OpenMeteoResponse);
 
@@ -33,7 +33,7 @@ function Weather({ cardCount = 5, showDescription = true }: WeatherProps) {
       </Conditions>
     </WeatherContext.Provider>
   );
-}
+};
 
 const Conditions = styled.div`
   font-family: ${({ theme }) => theme.fonts.firaSans};
