@@ -4,14 +4,14 @@ import { addDecorator } from '@storybook/react';
 import { withThemes } from '@react-theming/storybook-addon';
 import { theme } from '../src/theme';
 import previewTheme from './theme';
-import { withPropsTable } from 'storybook-addon-react-docgen';
+// import { withPropsTable } from 'storybook-addon-react-docgen';
 
 import './googleIcons.css';
 import './googleFonts.css';
 import './styles.css';
 
 addDecorator(withThemes(ThemeProvider, [theme]));
-addDecorator(withPropsTable);
+// addDecorator(withPropsTable);
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

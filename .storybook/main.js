@@ -4,10 +4,17 @@ module.exports = {
     '../src/**/*.stories.@(js|jsx|ts|tsx)'
   ],
   addons: [
+    '@storybook/preset-typescript',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-addon-react-docgen'
+    // 'storybook-addon-react-docgen',
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        configureJSX: true,
+      },
+    },
   ],
   framework: '@storybook/react',
   webpackFinal: async (config) => {
@@ -22,7 +29,7 @@ module.exports = {
       }
     });
     config.resolve.extensions.push('.ts', '.tsx');
-    return config
+    return config;
   },
   typescript: {
     check: false,

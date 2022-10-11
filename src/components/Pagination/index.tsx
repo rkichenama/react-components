@@ -24,7 +24,7 @@ const options = [
 ];
 const minPageSize = Math.min(...options.map(({ value }) => value));
 
-const Pagination = ({
+const Pagination: React.FC<PaginationProps> = ({
   totalItems = 0, page = 1, pageSize = minPageSize, onPaginationChange,
 }: PaginationProps) => {
   const [pages, pagesLabel] = React.useMemo(() => {
