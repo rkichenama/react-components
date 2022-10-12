@@ -88,7 +88,7 @@ const Header = () => {
 
   const ths = React.useMemo(() => (
     columns?.map((column, x) => (
-      <Td as='th' key={x} {...cellProps?.(undefined, x, [])}>
+      <Td as='th' scope='col' key={x} {...cellProps?.(undefined, x, [])}>
         {column instanceof Function
           ? column(undefined, x, [])
           : column}

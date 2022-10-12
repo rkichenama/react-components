@@ -13,6 +13,7 @@ const TextInput = ({
   maxCharacters, placeholder, icon,
   ...field
 }: InputProps): JSX.Element => {
+  const id = React.useId();
   const actualInput = React.useRef(undefined as unknown as HTMLInputElement);
 
   const hasValue = !!value?.length;
@@ -40,13 +41,13 @@ const TextInput = ({
     <Container {...{ size }}>
       <FakeInput {...{ isInvalid }}>
         {(label || placeholder) && (
-          <Label active={hasValue} {...{ hasIcon }}>
+          <Label htmlFor={id} active={hasValue} {...{ hasIcon }}>
             {hasValue ? label : label || placeholder}
           </Label>
         )}
         <OptionalIcon>{icon}</OptionalIcon>
         <ValueOverlay>
-          <Input {...inputOptions} ref={actualInput} />
+          <Input id={id} {...inputOptions} ref={actualInput} aria-label='text input' />
         </ValueOverlay>
         <StatusIcon onClick={clearAction}>
           {hasValue && <Close />}

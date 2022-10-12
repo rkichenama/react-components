@@ -17,7 +17,7 @@ const activeLabelStyle = css`
   background-color: ${({ theme }) => theme.colors.bg};
 `;
 
-export const Label = styled.label.attrs<LabelProps>({}) <LabelProps>`
+export const Label = styled.label<LabelProps>`
   position: absolute;
   padding: 2px 4px;
   left: ${({ hasIcon }) => (hasIcon ? 2 : 1)}ex;

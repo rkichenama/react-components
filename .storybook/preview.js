@@ -31,4 +31,17 @@ export const parameters = {
       method: 'alphabetical',
     },
   },
+  backgrounds: {
+    default: 'dark',
+    values: [
+      {
+        name: 'dark',
+        value: '#131313',
+      },
+      {
+        name: 'light',
+        value: '#ffffff',
+      },
+    ],
+  },
 }

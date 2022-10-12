@@ -21,6 +21,7 @@ const Typeahead = ({
   size, isLoading,
   onChange, onSelectionChange, ...field
 }: TypeaheadProps<number | string>) => {
+  const id = React.useId();
   const [open, setOpen] = React.useState(false);
   const [cursor, setCursor] = React.useState(-1);
 
@@ -100,13 +101,13 @@ const Typeahead = ({
     <Container {...{ size }}>
       <FakeInput {...{ isInvalid }}>
         {(label || placeholder) && (
-          <Label active={hasValue} {...{ hasIcon }}>
+          <Label htmlFor={id} active={hasValue} {...{ hasIcon }}>
             {hasValue ? label : label || placeholder}
           </Label>
         )}
         <OptionalIcon>{icon}</OptionalIcon>
         <ValueOverlay>
-          <Input {...inputOptions} />
+          <Input id={id} {...inputOptions} aria-label='typeahead' />
           {!value && !!selected && (
             <DisplayValue>
               <Tag>{selected.label || selected.value || null}</Tag>

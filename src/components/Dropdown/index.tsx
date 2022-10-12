@@ -19,6 +19,7 @@ const Dropdown = <T extends any>({
   helperText, validationMessage, placeholder, icon,
   ...field
 }: DropdownProps<T>) => {
+  const id = React.useId();
   const [open, setOpen] = React.useState(false);
   const [cursor, setCursor] = React.useState(-1);
 
@@ -101,13 +102,13 @@ const Dropdown = <T extends any>({
     <Container {...{ size }}>
       <FakeInput {...{ isInvalid }}>
         {(label || placeholder) && (
-          <Label active={hasValue} {...{ hasIcon }}>
+          <Label htmlFor={id} active={hasValue} {...{ hasIcon }}>
             {hasValue ? label : label || placeholder}
           </Label>
         )}
         <OptionalIcon>{icon}</OptionalIcon>
         <ValueOverlay>
-          <Input {...inputOptions} />
+          <Input id={id} {...inputOptions} aria-label='dropdown' />
           {!!selected && (
             <DisplayValue>
               <Tag>{selected.label || selected.value}</Tag>

@@ -59,6 +59,7 @@ const Pagination: React.FC<PaginationProps> = ({
               });
             }
           }}
+          aria-label='jump to page number'
         />
         <Move data-dir='right' onClick={handleMove} disabled={page === pages}>
           <Next />

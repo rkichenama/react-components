@@ -8,12 +8,6 @@
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const callback = (mutations) => {
-      for (const mutation of mutations) {
-        mutation.type
-        console.log(mutation);
-      }
-    };
     (new MutationObserver((mutations) => {
       for (const { addedNodes, target, attributeName} of mutations) {
         [...addedNodes, target].forEach(node => {

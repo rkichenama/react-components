@@ -5,8 +5,17 @@ module.exports = {
   ],
   addons: [
     '@storybook/preset-typescript',
+    '@storybook/addon-a11y',
+    // '@storybook/addon-essentials',
+    // '@storybook/addon-docs',
+    '@storybook/addon-controls',
+    '@storybook/addon-actions',
+    '@storybook/addon-viewport',
+    '@storybook/addon-toolbars',
+    '@storybook/addon-measure',
+    '@storybook/addon-outline',
+    '@storybook/addon-highlight',
     '@storybook/addon-links',
-    '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     // 'storybook-addon-react-docgen',
     {
@@ -35,6 +44,7 @@ module.exports = {
     check: false,
     checkOptions: {},
     reactDocgen: 'react-docgen-typescript',
+    // reactDocgen: 'react-docgen',
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),

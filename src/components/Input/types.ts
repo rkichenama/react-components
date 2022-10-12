@@ -13,6 +13,7 @@ export interface InputProps
   size?: number;
 }
 export interface LabelProps {
-  active: boolean;
-  hasIcon: boolean;
+  active?: boolean;
+  hasIcon?: boolean;
+  disabled?: boolean;
 }

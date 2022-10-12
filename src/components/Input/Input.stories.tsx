@@ -8,6 +8,11 @@ export default {
   title: 'Interactive/Input',
   component: Component,
   decorators: [SamplePage],
+  parameters: {
+    actions: {
+      handles: ['keydown input'],
+    },
+  },
   argTypes: {
     label: {
       description: 'the label for the input',
