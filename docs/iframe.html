@@ -344,12 +344,6 @@
   body.sb-show-main.sb-show-main {
     background-color: transparent !important;
   }</style><script>document.addEventListener('DOMContentLoaded', () => {
-    const callback = (mutations) => {
-      for (const mutation of mutations) {
-        mutation.type
-        console.log(mutation);
-      }
-    };
     (new MutationObserver((mutations) => {
       for (const { addedNodes, target, attributeName} of mutations) {
         [...addedNodes, target].forEach(node => {
@@ -383,4 +377,4 @@
           
       
           
-            window['STORIES'] = [{"titlePrefix":"","directory":"./src","files":"**/*.stories.mdx","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.mdx)$"},{"titlePrefix":"","directory":"./src","files":"**/*.stories.@(js|jsx|ts|tsx)","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(js|jsx|ts|tsx))$"}];</script><script src="runtime~main.6a9627b2.iframe.bundle.js"></script><script src="vendors~main.2d1c32f2.iframe.bundle.js"></script><script src="main.22b51a29.iframe.bundle.js"></script></body></html>
+            window['STORIES'] = [{"titlePrefix":"","directory":"./src","files":"**/*.stories.mdx","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.mdx)$"},{"titlePrefix":"","directory":"./src","files":"**/*.stories.@(js|jsx|ts|tsx)","importPathMatcher":"^\\.[\\\\/](?:src(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(js|jsx|ts|tsx))$"}];</script><script src="runtime~main.cf8f1e35.iframe.bundle.js"></script><script src="vendors~main.1b162a1f.iframe.bundle.js"></script><script src="main.e6fdaa2b.iframe.bundle.js"></script></body></html>
