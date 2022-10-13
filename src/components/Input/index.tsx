@@ -14,7 +14,7 @@ const TextInput = ({
   ...field
 }: InputProps): JSX.Element => {
   const id = React.useId();
-  const actualInput = React.useRef(undefined as unknown as HTMLInputElement);
+  const actualInput = React.useRef<HTMLInputElement>(null);
 
   const hasValue = !!value?.length;
   const hasIcon = !!icon;
