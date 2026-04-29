@@ -5,7 +5,6 @@ module.exports = {
   ],
   addons: [
     '@storybook/preset-typescript',
-    '@storybook/addon-a11y',
     // '@storybook/addon-essentials',
     // '@storybook/addon-docs',
     '@storybook/addon-controls',
@@ -18,6 +17,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-interactions',
     // 'storybook-addon-react-docgen',
+    '@storybook/addon-a11y',
     {
       name: "@storybook/addon-docs",
       options: {
